@@ -1,11 +1,11 @@
+from formula import FormulaFactory
 from grammar.parser import Parser
 from solver import SATSolver
 
 
 class SATInstance:
     def __init__(self, exprstr):
-        self.parser = Parser()
-        self.exprstr = self.__clean(exprstr)
+        self.wff = self.__clean(exprstr)
         self.is_contradiction = False
         self.is_tautology = False
 
@@ -21,7 +21,7 @@ class SATInstance:
 
     def __get_expression(self, tree):
         if isinstance(tree, list) and len(tree) >= 2:
-            operator = self.parser.operations[tree[0]]
+            operator = Parser().operations[tree[0]]
             return [operator] + map(self.__get_expression, tree[1:])
         elif isinstance(tree, list) and len(tree) == 1:
             return self.__get_expression(tree[0])
@@ -29,8 +29,9 @@ class SATInstance:
             return tree
 
     def find_solutions(self):
-        tree = self.parser.parse(self.exprstr)
-        solutions = SATSolver().solve(self.__get_expression(tree))
+        cnf = FormulaFactory.create_cnf(self.wff)
+        print "WFF:", self.wff, " => CNF:", str(cnf)
+        solutions = SATSolver().solve(self.__get_expression(cnf.expression))
         assignments = []
         count = 0
         for solution in solutions:
