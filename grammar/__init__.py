@@ -11,6 +11,11 @@ def p_error(p):
     raise SyntaxError(p)
 
 
+def p_expr_paren(p):
+    '''expr : LPAR expr RPAR'''
+    p[0] = p[2]
+
+
 def p_expr_unary(p):
     '''expr : NOT expr          %prec NOT'''
     p[0] = [p[1], p[2]]
@@ -39,6 +44,9 @@ precedence = Lexer.precedence
 t_AND = Lexer.t_AND
 t_OR = Lexer.t_OR
 t_NOT = Lexer.t_NOT
+
+t_LPAR = Lexer.t_LPAR
+t_RPAR = Lexer.t_RPAR
 t_LITERAL = Lexer.t_LITERAL
 
 t_ignore = Lexer.t_ignore

@@ -4,6 +4,8 @@ class Lexer:
         'AND',
         'OR',
         'NOT',
+        'LPAR',
+        'RPAR',
     )
 
     precedence = (
@@ -17,6 +19,8 @@ class Lexer:
     t_OR = r'\|'
     t_NOT = r'!'
     t_LITERAL = '[a-zA-Z]+'
+    t_LPAR = r'\('
+    t_RPAR = r'\)'
 
     # Ignore white space
     t_ignore = ' \t\n'
