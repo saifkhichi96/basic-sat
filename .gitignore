@@ -1,0 +1,6 @@
+.idea/
+*/*.pyc
+grammar/parser.out
+grammar/parsetab.py
+*/.DS_STORE
+.DS_Store
