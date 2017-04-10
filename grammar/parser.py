@@ -9,6 +9,7 @@ class Parser:
             '!': self._not,
             '->': self._if,
             '<->': self._bi,
+            '+': self._xor,
             '&': self._and,
             '|': self._or
         }
@@ -21,6 +22,9 @@ class Parser:
             return True
         elif isinstance(q, bool) and q:
             return True
+
+    def _xor(self, p, q):
+        return self._not(self._bi(p, q))
 
     def _bi(self, p, q):
         return self._and(self._if(p, q), self._if(q, p))

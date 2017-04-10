@@ -24,6 +24,7 @@ def p_expr_unary(p):
 def p_expr_binop(p):
     '''expr : expr IF expr      %prec IF
             | expr BI expr      %prec BI
+            | expr XOR expr     %prec XOR
             | expr OR expr      %prec OR
             | expr AND expr     %prec AND
             '''
@@ -47,6 +48,7 @@ t_AND = Lexer.t_AND
 t_OR = Lexer.t_OR
 t_NOT = Lexer.t_NOT
 t_IF = Lexer.t_IF
+t_XOR = Lexer.t_XOR
 t_BI = Lexer.t_BI
 
 t_LPAR = Lexer.t_LPAR

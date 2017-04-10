@@ -3,6 +3,7 @@ from grammar.parser import Parser
 
 IFF = "<->"
 IMPLIES = "->"
+XOR = "+"
 NOT = "!"
 OR = "|"
 AND = "&"
@@ -82,7 +83,8 @@ class BinaryFormula(Formula):
 class CNFFormula(Formula):
     def __init__(self, formula):
         # type: (Formula) -> None
-        expression = self.__convert(self.__implication_elimination_law(self.__biconditional_elimination(formula)))
+        expression = self.__convert(
+            self.__implication_elimination_law(self.__biconditional_elimination(self.__xor_elimination(formula))))
         Formula.__init__(self, expression)
 
     def __convert(self, formula):
@@ -102,8 +104,32 @@ class CNFFormula(Formula):
 
         return answer
 
+    def __xor_elimination(self, formula):
+        # type: (Formula) -> (Formula, None)
+        if formula is None:
+            return None
+
+        if isinstance(formula, BinaryFormula):
+            first = self.__xor_elimination(formula.first).expression
+            second = self.__xor_elimination(formula.second).expression
+
+            if formula.operator == XOR:
+                result = [NOT, [IFF, first, second]]
+            else:
+                result = [formula.operator, first, second]
+
+        elif isinstance(formula, UnaryFormula):
+            first = self.__xor_elimination(formula.first).expression
+            result = [NOT, first]
+
+        else:
+            result = formula.expression
+
+        return FormulaFactory.create(result)
+
     def __biconditional_elimination(self, formula):
         # type: (Formula) -> (Formula, None)
+        print formula
         if formula is None:
             return None
 
@@ -116,6 +142,10 @@ class CNFFormula(Formula):
             else:
                 result = [formula.operator, first, second]
 
+        elif isinstance(formula, UnaryFormula):
+            first = self.__biconditional_elimination(formula.first).expression
+            result = [NOT, first]
+
         else:
             result = formula.expression
 
@@ -123,6 +153,7 @@ class CNFFormula(Formula):
 
     def __implication_elimination_law(self, formula):
         # type: (Formula) -> (Formula, None)
+        print formula
         if formula is None:
             return None
 
@@ -134,6 +165,10 @@ class CNFFormula(Formula):
                 result = [OR, [NOT, first], second]
             else:
                 result = [formula.operator, first, second]
+
+        elif isinstance(formula, UnaryFormula):
+            first = self.__implication_elimination_law(formula.first).expression
+            result = [NOT, first]
 
         else:
             result = formula.expression

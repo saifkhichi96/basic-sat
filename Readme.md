@@ -78,6 +78,7 @@ Symbol to be used for each operation is written opposite to its name.
 2) Disjunction (|)
 3) Implication (->)
 4) Biconditional (->)
+5) XOR (+)
 
 ### Symbols
 #### Variables
