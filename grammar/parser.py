@@ -7,10 +7,19 @@ class Parser:
     def __init__(self):
         self.operations = {
             '!': self._not,
+            '->': self._if,
             '&': self._and,
             '|': self._or
         }
         create()
+
+    def _if(arg1, arg2):
+        if isinstance(arg1, bool) and arg1:
+            return arg2
+        elif isinstance(arg1, bool) and not arg1:
+            return True
+        elif isinstance(arg2, bool) and arg2:
+            return True
 
     def _and(self, p, q):
         if isinstance(p, bool) and p:
