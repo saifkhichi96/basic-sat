@@ -17,22 +17,19 @@ def main():
     while True:
         try:
             # Get a wff formula from user
-            wff = raw_input("\n(CTRL+C to exit) Enter a wff: ")
+            wff = raw_input("\n\n(CTRL+C to exit) Enter a wff: ")
 
             # Find solutions of the wff
             sat = SATInstance(wff)
             solutions = sat.find_solutions()
 
-            # If solutions exists, print them
-            if sat.is_tautology:
-                print "wff \"{}\" is a tautology.".format(wff)
-
             # If no solutions, input is unsatisfiable
-            elif sat.is_contradiction:
-                print "wff \"{}\" is a contradiction.".format(wff)
+            if sat.is_contradiction:
+                print "\n[{}] =".format(wff), "[{}] is UNSATISFIABLE.".format(str(sat.formula))
 
+            # If solutions exists, print them
             else:
-                print "wff \"{}\" is satisfied by following assignments:".format(wff)
+                print "\n[{}] =".format(wff), "[{}] is SATISFIED by following assignments:".format(str(sat.formula))
                 i = 1
                 for solution in solutions:
                     print "\t{})".format(i), solution

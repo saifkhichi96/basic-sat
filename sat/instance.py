@@ -7,7 +7,6 @@ class SATInstance:
     def __init__(self, exprstr):
         self.wff = self.__clean(exprstr)
         self.is_contradiction = False
-        self.is_tautology = False
 
     def __clean(self, string):
         string = string.replace("\n", " ")
@@ -29,9 +28,8 @@ class SATInstance:
             return tree
 
     def find_solutions(self):
-        cnf = FormulaFactory.create_cnf(self.wff)
-        print "WFF:", self.wff, " => CNF:", str(cnf)
-        solutions = SATSolver().solve(self.__get_expression(cnf.expression))
+        self.formula = FormulaFactory.create_cnf(self.wff)
+        solutions = SATSolver().solve(self.__get_expression(self.formula.expression))
         assignments = []
         count = 0
         for solution in solutions:
@@ -42,5 +40,4 @@ class SATInstance:
             assignments.append(s[:-2])
 
         self.is_contradiction = len(assignments) == 0
-        self.is_tautology = len(assignments) == 2 ** count
         return assignments
