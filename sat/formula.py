@@ -85,7 +85,6 @@ class BinaryFormula(Formula):
 class CNFFormula(Formula):
     def __init__(self, formula):
         # type: (Formula) -> None
-        print formula.expression
         expression = self.__convert(
             self.__implication_elimination_law(self.__biconditional_elimination(self.__xor_elimination(formula))))
         Formula.__init__(self, expression)
