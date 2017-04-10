@@ -1,6 +1,7 @@
 # operators:
 from grammar.parser import Parser
 
+IFF = "<->"
 IMPLIES = "->"
 NOT = "!"
 OR = "|"
@@ -81,7 +82,7 @@ class BinaryFormula(Formula):
 class CNFFormula(Formula):
     def __init__(self, formula):
         # type: (Formula) -> None
-        expression = self.__convert(self.__implication_elimination_law(formula))
+        expression = self.__convert(self.__implication_elimination_law(self.__biconditional_elimination(formula)))
         Formula.__init__(self, expression)
 
     def __convert(self, formula):
@@ -100,6 +101,25 @@ class CNFFormula(Formula):
             answer = formula.expression
 
         return answer
+
+    def __biconditional_elimination(self, formula):
+        # type: (Formula) -> (Formula, None)
+        if formula is None:
+            return None
+
+        if isinstance(formula, BinaryFormula):
+            first = self.__biconditional_elimination(formula.first).expression
+            second = self.__biconditional_elimination(formula.second).expression
+
+            if formula.operator == IFF:
+                result = [AND, [IMPLIES, first, second], [IMPLIES, second, first]]
+            else:
+                result = [formula.operator, first, second]
+
+        else:
+            result = formula.expression
+
+        return FormulaFactory.create(result)
 
     def __implication_elimination_law(self, formula):
         # type: (Formula) -> (Formula, None)
