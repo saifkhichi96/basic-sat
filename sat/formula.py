@@ -12,7 +12,8 @@ AND = "&"
 class FormulaFactory:
     @classmethod
     def __check_primitive(self, proposition):
-        return isinstance(proposition, str) or (isinstance(proposition, list) and len(proposition) == 1)
+        return isinstance(proposition, str) or isinstance(proposition, bool) or (
+        isinstance(proposition, list) and len(proposition) == 1)
 
     @classmethod
     def create(cls, proposition):
@@ -25,6 +26,7 @@ class FormulaFactory:
 
         elif proposition[0] == NOT:
             return UnaryFormula(proposition)
+
         else:
             return BinaryFormula(proposition)
 
@@ -83,6 +85,7 @@ class BinaryFormula(Formula):
 class CNFFormula(Formula):
     def __init__(self, formula):
         # type: (Formula) -> None
+        print formula.expression
         expression = self.__convert(
             self.__implication_elimination_law(self.__biconditional_elimination(self.__xor_elimination(formula))))
         Formula.__init__(self, expression)
@@ -129,7 +132,6 @@ class CNFFormula(Formula):
 
     def __biconditional_elimination(self, formula):
         # type: (Formula) -> (Formula, None)
-        print formula
         if formula is None:
             return None
 
@@ -153,7 +155,6 @@ class CNFFormula(Formula):
 
     def __implication_elimination_law(self, formula):
         # type: (Formula) -> (Formula, None)
-        print formula
         if formula is None:
             return None
 
