@@ -8,18 +8,22 @@ class Parser:
         self.operations = {
             '!': self._not,
             '->': self._if,
+            '<->': self._bi,
             '&': self._and,
             '|': self._or
         }
         create()
 
-    def _if(arg1, arg2):
-        if isinstance(arg1, bool) and arg1:
-            return arg2
-        elif isinstance(arg1, bool) and not arg1:
+    def _if(self, p, q):
+        if isinstance(p, bool) and p:
+            return q
+        elif isinstance(p, bool) and not p:
             return True
-        elif isinstance(arg2, bool) and arg2:
+        elif isinstance(q, bool) and q:
             return True
+
+    def _bi(self, p, q):
+        return self._and(self._if(p, q), self._if(q, p))
 
     def _and(self, p, q):
         if isinstance(p, bool) and p:
