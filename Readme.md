@@ -1,0 +1,115 @@
+# BasicSAT: A _very_ basic SAT Solver in Python
+
+BasicSAT is a simple SAT solver written in Python. It uses
+a very naive implementation of [DPLL algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm)
+to find satisfiability of a given [propositional formula](https://en.wikipedia.org/wiki/Propositional_formula).
+
+BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL
+statements are first converted to conjective normal form (CNF) before
+being given to the SAT solver to determine its satisfiability.
+
+
+## Prerequisites
+This project uses Python's [ply.yacc](http://www.dabeaz.com/ply/)
+package for parsing input formulas and generating their
+parse trees. Before you proceed, make sure that you have the
+required package installed on your machine.
+
+For details, visit its [website](http://www.dabeaz.com/ply/).
+
+## How to Run
+The project can be run in a number of different modes. To run
+the project:
+1) Clone the repository to your local filesystem using `git clone https://github.com/sfllhkhan95/basic-sat.gut basic-sat`.
+2) Change current directory using `cd basic-sat`.
+
+### Interactive Mode
+SAT solver can also be started in interactive mode. In this mode,
+user can write a propositional formula interactively and get its
+assignments (if any).
+
+To run the program in interactive mode, use the command:
+````
+$  python main.py
+````
+Interactive mode enters the program into an infinte loop which can
+be exited by pressing `CTRL+C` buttons.
+
+### From a File
+To execute formulas listed in a file, use the following command:
+````
+$  python main.py -i "<comma-separted-list-of-files>"
+````
+
+For example, executing `python main.py -i "file1, file2"` would test
+all the formulas defined in `file1` and `file2`. Input files must have
+only one formula written on each line, and nothing else in the file.
+
+Formulas must use valid syntax and semantics as defined below. Formulas
+which are not well-formed or use invalid symbols raise SyntaxError
+exceptions.
+
+### Examples
+The project contains sample PL formulas in `examples/` directory which
+can be run using the following command from terminal:
+````
+$  chmod u+w run-examples.sh
+$  ./run-examples.sh
+````
+This would solve all the formulas from the `examples/` directory
+and print their results: `Unsatisfiable` or `Satisfiable`.
+For satisfiable formulas, assignments that satisfy the fomula
+are also listed.
+
+
+## Semantics
+BasicSAT expects input formulas to follow a certain syntax. The following
+secitions describe allowed and forbidden symbols.
+
+### Connectors
+BasicSAT can solve formulas with unary and binary operators listed below.
+Symbol to be used for each operation is written opposite to its name.
+
+#### Unary Operators
+1) Negation (!)
+
+#### Binary Operators
+1) Conjunction (&)
+2) Disjunction (|)
+3) Implication (->)
+
+### Symbols
+#### Variables
+Symbols used to represent propositions must be subsets of regex `\[a-zA-Z]+`.
+That is, they can only be alphabetic. No numbers or special characters are
+supported.
+
+#### Brackets
+Parentheses `()` are supported in expressions, but brackets `[]` and
+braces `{}` are not.
+
+#### Constants
+As of yet, no constants are supported.
+
+### Help
+To access help from command-line, use the command:
+````
+$  python main.py -h
+````
+To view complete documentation from command-line, on Linux use 
+the command:
+````
+$  cat Readme.md | less
+````
+
+### Efficiency
+SAT is a NP-complete problem. This project converts an input formula into
+a CNF in linear time, `O(n)`. However, solving the CNF is not very
+efficient.
+
+### Disclaimer
+This project was completed by [Mansoor Jadoon](http://github.com/mansoorjadoon)
+and [Muhammad Saifullah Khan](http://github.com/sfllhkhan95) as an assignment for
+SE320 Formal Methods course for B.E. Software Engineering degree
+from [School of Electrical Engineering and Computer Sciences](http://www.seecs.nust.edu.pk),
+[NUST](http://www.nust.edu.pk), Pakistan.
