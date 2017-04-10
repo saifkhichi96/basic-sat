@@ -91,7 +91,7 @@ Parentheses `()` are supported in expressions, but brackets `[]` and
 braces `{}` are not.
 
 #### Constants
-As of yet, no constants are supported.
+Use `1` to represent `True` and `0` to represent `False` in a propositional formula.
 
 ### Help
 To access help from command-line, use the command:

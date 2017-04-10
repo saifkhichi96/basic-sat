@@ -3,6 +3,17 @@ from ply import lex
 from lexer import Lexer
 
 
+def t_FALSE(t):
+    r'0'
+    t.value = False
+    return t
+
+
+def t_TRUE(t):
+    r'1'
+    t.value = True
+    return t
+
 def t_error(p):
     raise SystemError(p)
 
@@ -37,7 +48,9 @@ def p_expr_literal(p):
 
 
 def p_literal(p):
-    '''literal : LITERAL'''
+    '''literal : FALSE
+               | TRUE
+               | LITERAL'''
     p[0] = p[1]
 
 

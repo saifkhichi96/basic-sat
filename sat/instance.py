@@ -33,11 +33,14 @@ class SATInstance:
         assignments = []
         count = 0
         for solution in solutions:
-            s = ""
-            count = len(solution.keys())
-            for k, v in zip(solution.keys(), solution.values()):
-                s += k + " = " + str(1 if v else 0) + ", "
-            assignments.append(s[:-2])
+            if isinstance(solution, bool):
+                assignments.append(str(solution))
+            else:
+                s = ""
+                count = len(solution.keys())
+                for k, v in zip(solution.keys(), solution.values()):
+                    s += k + " = " + str(1 if v else 0) + ", "
+                assignments.append(s[:-2])
 
         self.is_contradiction = len(assignments) == 0
         return assignments

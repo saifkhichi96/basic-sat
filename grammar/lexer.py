@@ -9,6 +9,8 @@ class Lexer:
         'XOR',
         'LPAR',
         'RPAR',
+        'FALSE',
+        'TRUE'
     )
 
     precedence = (
