@@ -50,15 +50,16 @@ class Formula:
     def __to_string(self, tree):
         if isinstance(tree, str):
             self.__string += tree
-        elif isinstance(tree, list) and len(tree) == 3:
-            self.__string += "("
-            self.__to_string(tree[1])
-            self.__string += " " + tree[0] + " "
-            self.__to_string(tree[2])
-            self.__string += ")"
-        else:
-            self.__string += tree[0]
-            self.__to_string(tree[1])
+        elif isinstance(tree, list):
+            if len(tree) == 3:
+                self.__string += "("
+                self.__to_string(tree[1])
+                self.__string += " " + tree[0] + " "
+                self.__to_string(tree[2])
+                self.__string += ")"
+            elif len(tree) == 2:
+                self.__string += tree[0]
+                self.__to_string(tree[1])
 
 
 class UnaryFormula(Formula):
@@ -80,22 +81,34 @@ class BinaryFormula(Formula):
 class CNFFormula(Formula):
     def __init__(self, formula):
         # type: (Formula) -> None
-        expression = self.__convert(self.__replace_implication(formula))
+        expression = self.__convert(self.__implication_elimination_law(formula))
         Formula.__init__(self, expression)
 
-    def __replace_implication(self, formula):
-        # type: (Formula) -> (Formula, None)
+    def __convert(self, formula):
+        # type: (Formula) -> list
+        if isinstance(formula, BinaryFormula):
+            first = FormulaFactory.create(self.__convert(formula.first))
+            second = FormulaFactory.create(self.__convert(formula.second))
 
-        """
-        Removes implications by using the equivalence:
-            p -> q  -||-  !p v q
-        """
+            if formula.operator == AND:
+                answer = [AND, first.expression, second.expression]
+            else:
+                answer = self.__distributive_law(first, second)
+        elif isinstance(formula, UnaryFormula):
+            answer = self.__not_elimination_law(FormulaFactory.create(self.__de_morgans_law(formula)))
+        else:
+            answer = formula.expression
+
+        return answer
+
+    def __implication_elimination_law(self, formula):
+        # type: (Formula) -> (Formula, None)
         if formula is None:
             return None
 
         if isinstance(formula, BinaryFormula):
-            first = self.__replace_implication(formula.first).expression
-            second = self.__replace_implication(formula.second).expression
+            first = self.__implication_elimination_law(formula.first).expression
+            second = self.__implication_elimination_law(formula.second).expression
 
             if formula.operator == IMPLIES:
                 result = [OR, [NOT, first], second]
@@ -107,25 +120,46 @@ class CNFFormula(Formula):
 
         return FormulaFactory.create(result)
 
-    def __convert(self, formula):
-        # type: (Formula) -> list
-        if isinstance(formula, BinaryFormula):
-            first = FormulaFactory.create(self.__convert(formula.first))
-            second = FormulaFactory.create(self.__convert(formula.second))
-
-            if formula.operator == AND:
-                return [AND, first.expression, second.expression]
-            else:
-                return self.__distribute_or(first, second)
-        else:
-            return formula.expression
-
-    def __distribute_or(self, f1, f2):
+    def __distributive_law(self, f1, f2):
         # type: (Formula, Formula) -> list
         if f1.operator == AND:
-            answer = [AND, self.__distribute_or(f1.first, f2), self.__distribute_or(f1.second, f2)]
+            answer = [AND, self.__distributive_law(f1.first, f2), self.__distributive_law(f1.second, f2)]
         elif f2.operator == AND:
-            answer = [AND, self.__distribute_or(f1, f2.first), self.__distribute_or(f1, f2.second)]
+            answer = [AND, self.__distributive_law(f1, f2.first), self.__distributive_law(f1, f2.second)]
         else:
             answer = [OR, f1.expression, f2.expression]
+        return answer
+
+    def __de_morgans_law(self, f1):
+        # type: (Formula) -> list
+        if isinstance(f1, UnaryFormula) and isinstance(f1.first, BinaryFormula):
+            if f1.first.operator == AND:
+                answer = [OR,
+                          [NOT, self.__de_morgans_law(f1.first.first) if isinstance(f1.first.first,
+                                                                                    UnaryFormula) else f1.first.first.expression],
+                          [NOT, self.__de_morgans_law(f1.first.second) if isinstance(f1.first.second,
+                                                                                     UnaryFormula) else f1.first.second.expression]]
+            else:
+                answer = [AND,
+                          [NOT, self.__de_morgans_law(f1.first.first) if isinstance(f1.first.first,
+                                                                                    UnaryFormula) else f1.first.first.expression],
+                          [NOT, self.__de_morgans_law(f1.first.second) if isinstance(f1.first.second,
+                                                                                     UnaryFormula) else f1.first.second.expression]]
+
+        else:
+            answer = f1.expression
+
+        return answer
+
+    def __not_elimination_law(self, f1):
+        # type: (Formula) -> list
+        if isinstance(f1, UnaryFormula) and isinstance(f1.first, UnaryFormula):
+            answer = f1.first.expression[-1]
+
+        elif isinstance(f1, BinaryFormula):
+            answer = [f1.operator, self.__not_elimination_law(f1.first), self.__not_elimination_law(f1.second)]
+
+        else:
+            answer = f1.expression
+
         return answer
