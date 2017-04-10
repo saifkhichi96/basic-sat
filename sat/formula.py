@@ -51,9 +51,11 @@ class Formula:
         if isinstance(tree, str):
             self.__string += tree
         elif isinstance(tree, list) and len(tree) == 3:
+            self.__string += "("
             self.__to_string(tree[1])
             self.__string += " " + tree[0] + " "
             self.__to_string(tree[2])
+            self.__string += ")"
         else:
             self.__string += tree[0]
             self.__to_string(tree[1])
