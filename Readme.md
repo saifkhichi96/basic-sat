@@ -20,7 +20,7 @@ For details, visit its [website](http://www.dabeaz.com/ply/).
 ## How to Run
 The project can be run in a number of different modes. To run
 the project:
-1) Clone the repository to your local filesystem using `git clone https://github.com/sfllhkhan95/basic-sat.gut basic-sat`.
+1) Clone the repository to your local filesystem using `git clone https://github.com/sfllhkhan95/basic-sat.git`.
 2) Change current directory using `cd basic-sat`.
 
 ### Interactive Mode
@@ -77,7 +77,7 @@ Symbol to be used for each operation is written opposite to its name.
 1) Conjunction (&)
 2) Disjunction (|)
 3) Implication (->)
-4) Biconditional (->)
+4) Biconditional (<->)
 5) XOR (+)
 
 ### Symbols
