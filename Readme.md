@@ -4,6 +4,10 @@ BasicSAT is a simple SAT solver written in Python. It uses a very naive implemen
 
 BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL statements are first converted to conjunctive normal form (CNF) before being given to the SAT solver to determine its satisfiability.
 
+## Releases
+| Version | Description |
+| [:v1.0.0:](https://github.com/saifkhichi96/basic-sat/releases/tag/v1.0.0) | Initial version of the project, written in Python2.7. |
+| [:v2.0.0:]https://github.com/saifkhichi96/basic-sat/releases/tag/v2.0.0 | Project upgraded to Python3. |
 
 ## Prerequisites
 This project requires Python3 and uses the [ply.yacc](http://www.dabeaz.com/ply/) package for parsing input formulas and generating their parse trees. Before you proceed, make sure that you have the required package installed on your machine.
@@ -42,11 +46,13 @@ The project contains sample PL formulas in `examples/` directory which can be ru
 $  chmod u+w run-examples.sh
 $  ./run-examples.sh
 ````
-This would solve all the formulas from the `examples/` directory and print their results: `Unsatisfiable` or `Satisfiable`. For satisfiable formulas, assignments that satisfy the formula are also listed.
+This would solve all the formulas from the `examples/` directory and print their results: `Unsatisfiable` or `Satisfiable`.
+
+For satisfiable formulas, assignments that satisfy the formula are also listed.
 
 
 ## Semantics
-BasicSAT expects input formulas to follow a certain syntax. The following secitions describe allowed and forbidden symbols.
+BasicSAT expects input formulas to follow a certain syntax. The following sections describe allowed and forbidden symbols.
 
 ### Connectors
 BasicSAT can solve formulas with unary and binary operators listed below. Symbol to be used for each operation is written opposite to its name.
@@ -83,6 +89,3 @@ $  cat Readme.md | less
 
 ### Efficiency
 SAT is a NP-complete problem. This project converts an input formula into a CNF in linear time, `O(n)`. However, solving the CNF is not very efficient.
-
-### Disclaimer
-This project was jointly completed by [Mansoor Jadoon](http://github.com/mansoorjadoon) and [Muhammad Saifullah Khan](http://github.com/saifkhichi96) at [School of Electrical Engineering and Computer Sciences](http://www.seecs.nust.edu.pk), [NUST](http://www.nust.edu.pk), Pakistan.
