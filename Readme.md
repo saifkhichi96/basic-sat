@@ -6,8 +6,9 @@ BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL
 
 ## Releases
 | Version | Description |
-| [:v1.0.0:](https://github.com/saifkhichi96/basic-sat/releases/tag/v1.0.0) | Initial version of the project, written in Python2.7. |
-| [:v2.0.0:]https://github.com/saifkhichi96/basic-sat/releases/tag/v2.0.0 | Project upgraded to Python3. |
+| :-----: | :---------- |
+| [v1.0.0](https://github.com/saifkhichi96/basic-sat/releases/tag/v1.0.0) | Initial version of the project, written in Python2.7. |
+| [v2.0.0](https://github.com/saifkhichi96/basic-sat/releases/tag/v2.0.0) | Project upgraded to Python3. |
 
 ## Prerequisites
 This project requires Python3 and uses the [ply.yacc](http://www.dabeaz.com/ply/) package for parsing input formulas and generating their parse trees. Before you proceed, make sure that you have the required package installed on your machine.
