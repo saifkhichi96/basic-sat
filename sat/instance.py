@@ -1,6 +1,6 @@
-from formula import FormulaFactory
+from .formula import FormulaFactory
 from grammar.parser import Parser
-from solver import SATSolver
+from .solver import SATSolver
 
 
 class SATInstance:
@@ -21,7 +21,7 @@ class SATInstance:
     def __get_expression(self, tree):
         if isinstance(tree, list) and len(tree) >= 2:
             operator = Parser().operations[tree[0]]
-            return [operator] + map(self.__get_expression, tree[1:])
+            return [operator] + list(map(self.__get_expression, tree[1:]))
         elif isinstance(tree, list) and len(tree) == 1:
             return self.__get_expression(tree[0])
         else:

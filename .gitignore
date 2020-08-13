@@ -1,7 +1,10 @@
+# IntelliJ files
 .idea/
-*/*.pyc
-grammar/parser.out
+
+# Build files
+*.pyc
+*.out
 grammar/parsetab.py
-*/.DS_STORE
-.DS_Storea
-.DS_Store
+
+# OS files
+.DS_STORE

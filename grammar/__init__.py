@@ -1,6 +1,6 @@
 from ply import lex
 
-from lexer import Lexer
+from .lexer import Lexer
 
 
 def t_FALSE(t):

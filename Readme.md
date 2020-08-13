@@ -2,14 +2,13 @@
 
 BasicSAT is a simple SAT solver written in Python. It uses a very naive implementation of [DPLL algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) to find satisfiability of a given [propositional formula](https://en.wikipedia.org/wiki/Propositional_formula).
 
-BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL statements are first converted to conjective normal form (CNF) before being given to the SAT solver to determine its satisfiability.
+BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL statements are first converted to conjunctive normal form (CNF) before being given to the SAT solver to determine its satisfiability.
 
 
 ## Prerequisites
-This project uses Python's [ply.yacc](http://www.dabeaz.com/ply/) package for parsing input formulas and generating their
-parse trees. Before you proceed, make sure that you have the required package installed on your machine.
+This project requires Python3 and uses the [ply.yacc](http://www.dabeaz.com/ply/) package for parsing input formulas and generating their parse trees. Before you proceed, make sure that you have the required package installed on your machine.
 
-For details, visit its [website](http://www.dabeaz.com/ply/).
+You should be able to install it by running `pip install ply`. For details, visit its [website](http://www.dabeaz.com/ply/).
 
 ## How to Run
 The project can be run in a number of different modes.
@@ -43,8 +42,7 @@ The project contains sample PL formulas in `examples/` directory which can be ru
 $  chmod u+w run-examples.sh
 $  ./run-examples.sh
 ````
-This would solve all the formulas from the `examples/` directory and print their results: `Unsatisfiable` or `Satisfiable`.
-For satisfiable formulas, assignments that satisfy the fomula are also listed.
+This would solve all the formulas from the `examples/` directory and print their results: `Unsatisfiable` or `Satisfiable`. For satisfiable formulas, assignments that satisfy the formula are also listed.
 
 
 ## Semantics

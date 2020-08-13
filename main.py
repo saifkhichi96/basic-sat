@@ -12,53 +12,50 @@ def solve(expression):
 
         # If no solutions, input is unsatisfiable
         if sat.is_contradiction:
-            print "\n[{}] =".format(expression), "[{}] is UNSATISFIABLE.".format(str(sat.formula))
+            print("\n[{}] =".format(expression), "[{}] is UNSATISFIABLE.".format(str(sat.formula)))
 
         # If solutions exists, print them
         else:
-            print "\n[{}] =".format(expression), "[{}] is SATISFIED by following assignments:".format(str(sat.formula))
+            print("\n[{}] =".format(expression), "[{}] is SATISFIED by following assignments:".format(str(sat.formula)))
             i = 1
             for solution in solutions:
-                print "\t{})".format(i), solution
+                print("\t{})".format(i), solution)
                 i += 1
 
     # Catch syntax errors
-    except SyntaxError, se:
-        print "//---------------------------------------------------//\n" \
+    except SyntaxError as se:
+        print("//---------------------------------------------------//\n" \
               "// Input expression not well-formed and/or invalid   //\n" \
               "// operators used. For instructions, please see      //\n" \
               "// Readme. Exit with CTRL+C.                         //\n" \
               "//---------------------------------------------------//\n" \
-              "Error message: {}".format(se)
-    except SystemError, se:
-        print "//---------------------------------------------------//\n" \
+              "Error message: {}".format(se))
+    except SystemError as se:
+        print("//---------------------------------------------------//\n" \
               "// Input expression contains invalid names. Literals //\n" \
               "// can only contain alphabets. For instructions, see //\n" \
               "// Readme. Exit with CTRL+C.                         //\n" \
               "//---------------------------------------------------//\n" \
-              "Error message: {}".format(se)
+              "Error message: {}".format(se))
 
 
 def main():
     welcome = "//---------------------------------------------------//\n" \
               "//  BasicSAT - A \"very\" basic SAT solver             //\n" \
-              "//    (Assignment #2, SE320)                         //\n" \
               "//                                                   //\n" \
-              "//                  Muhammad Saifullah Khan (111453) //\n" \
-              "//                              Mansoor Ali (111290) //\n" \
-              "//---------------------------------------------------//\n" \
+              "//                                                   //\n" \
               "// For documentation and instructions on how to use  //\n" \
               "// BasicSAT, please see Readme. Exit with CTRL+C.    //\n" \
               "//---------------------------------------------------//"
 
-    print welcome
+    print(welcome)
     while True:
         try:
             # Get a wff formula from user
-            wff = raw_input("\n\n(CTRL+C to exit) Enter a wff: ")
+            wff = input("\n\n(CTRL+C to exit) Enter a wff: ")
             solve(wff)
         except KeyboardInterrupt:
-            print
+            print()
             break
 
 
@@ -67,9 +64,9 @@ def exec_file(file):
         f = open(file, "r")
 
         for wff in f.readlines():
-            solve(wff)
-    except IOError, ie:
-        print "File \"{}\" not found ... skipping".format(file)
+            solve(wff.strip())
+    except IOError as ie:
+        print("File \"{}\" not found ... skipping".format(file))
 
 if __name__ == '__main__':
     argv = sys.argv[1:]
@@ -79,9 +76,9 @@ if __name__ == '__main__':
         if len(opts) > 0:
             for opt, arg in opts:
                 if opt == '-h':
-                    print 'USAGE:\n' \
+                    print('USAGE:\n' \
                           '\tinteractive-mode: python main.py\n' \
-                          '\trun-from-file: python main.py -i "<comma-separated inputfiles in quotes>"'
+                          '\trun-from-file: python main.py -i "<comma-separated inputfiles in quotes>"')
                     sys.exit(0)
                 elif opt in ("-i", "--ifile"):
                     for file in arg.split(","):
