@@ -2,9 +2,12 @@
 .idea/
 
 # Build files
+__pycache__/
 *.pyc
 *.out
-grammar/parsetab.py
+*/grammar/parsetab.py
+logs.txt
+
 
 # OS files
 .DS_STORE

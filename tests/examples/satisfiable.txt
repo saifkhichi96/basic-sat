@@ -1,0 +1,11 @@
+p & q
+p | q
+p -> q
+p <-> q
+p + q
+~p
+~p & q -> r
+~p | q
+~p | ~q & (r & r)
+(q & r) -> r
+p -> q -> r

@@ -1,89 +1,37 @@
-import getopt
-import sys
+import argparse
 
-from sat.instance import SATInstance
+from bsat import bsat_interactive, solve_file, solve_i
 
 
-def solve(expression):
-    try:
-        # Find solutions of the wff
-        sat = SATInstance(expression)
-        solutions = sat.find_solutions()
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description='Solves SATisfiability problems in propositional logic.')
+parser.add_argument('-w', type=str, help='a PL formula to be solved')
+parser.add_argument('-f', type=str, help='file with a list of PL formulas')
 
-        # If no solutions, input is unsatisfiable
-        if sat.is_contradiction:
-            print("\n[{}] =".format(expression), "[{}] is UNSATISFIABLE.".format(str(sat.formula)))
-
-        # If solutions exists, print them
-        else:
-            print("\n[{}] =".format(expression), "[{}] is SATISFIED by following assignments:".format(str(sat.formula)))
-            i = 1
-            for solution in solutions:
-                print("\t{})".format(i), solution)
-                i += 1
-
-    # Catch syntax errors
-    except SyntaxError as se:
-        print("//---------------------------------------------------//\n" \
-              "// Input expression not well-formed and/or invalid   //\n" \
-              "// operators used. For instructions, please see      //\n" \
-              "// Readme. Exit with CTRL+C.                         //\n" \
-              "//---------------------------------------------------//\n" \
-              "Error message: {}".format(se))
-    except SystemError as se:
-        print("//---------------------------------------------------//\n" \
-              "// Input expression contains invalid names. Literals //\n" \
-              "// can only contain alphabets. For instructions, see //\n" \
-              "// Readme. Exit with CTRL+C.                         //\n" \
-              "//---------------------------------------------------//\n" \
-              "Error message: {}".format(se))
+args = parser.parse_args()
 
 
 def main():
-    welcome = "//---------------------------------------------------//\n" \
-              "//  BasicSAT - A \"very\" basic SAT solver             //\n" \
-              "//                                                   //\n" \
-              "//                                                   //\n" \
-              "// For documentation and instructions on how to use  //\n" \
-              "// BasicSAT, please see Readme. Exit with CTRL+C.    //\n" \
-              "//---------------------------------------------------//"
+    if args.f is not None:
+        file = args.f
+        print(file)
+        results = solve_file(file.strip())
+        for wff, (solvable, cnf, solutions) in results.items():
+            print (wff, '=', cnf, end=' ')
+            if solvable:
+                print ('resolved with following assignments:')
+                for i, solution in enumerate(solutions):
+                    print("\t{})".format(i), solution)
+            else:
+                print ('is not solvable.')
 
-    print(welcome)
-    while True:
-        try:
-            # Get a wff formula from user
-            wff = input("\n\n(CTRL+C to exit) Enter a wff: ")
-            solve(wff)
-        except KeyboardInterrupt:
-            print()
-            break
+    elif args.w is not None:
+        wff = args.w
+        solve_i(wff)
 
+    else:
+        bsat_interactive()
 
-def exec_file(file):
-    try:
-        f = open(file, "r")
-
-        for wff in f.readlines():
-            solve(wff.strip())
-    except IOError as ie:
-        print("File \"{}\" not found ... skipping".format(file))
 
 if __name__ == '__main__':
-    argv = sys.argv[1:]
-    try:
-        opts, args = getopt.getopt(argv, "-hi:", ["ifile="])
-
-        if len(opts) > 0:
-            for opt, arg in opts:
-                if opt == '-h':
-                    print('USAGE:\n' \
-                          '\tinteractive-mode: python main.py\n' \
-                          '\trun-from-file: python main.py -i "<comma-separated inputfiles in quotes>"')
-                    sys.exit(0)
-                elif opt in ("-i", "--ifile"):
-                    for file in arg.split(","):
-                        exec_file(file.strip())
-        else:
-            main()
-    except getopt.GetoptError:
-        main()
+    main()

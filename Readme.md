@@ -25,27 +25,36 @@ To run the project:
 ### Interactive Mode
 SAT solver can also be started in interactive mode. In this mode, user can write a propositional formula interactively and get its assignments (if any).
 
-To run the program in interactive mode, use the command:
+To run the program in interactive mode, use the command in the project directory:
 ````
 $  python main.py
 ````
-Interactive mode enters the program into an infinte loop which can be exited by pressing `CTRL+C` buttons.
+
+You can exit interactive mode by pressing `CTRL+C` buttons.
+
+### From the CLI
+You can solve a formula directly from the command-line by running the following command in the project directory:
+````
+$  python main.py -w "<formula>"
+````
+
+You can pass a well-formed propositional formula with the `-w` flag, and the solutions of the formula as well as its CNF form will be displayed in the output.
+
 
 ### From a File
-To execute formulas listed in a file, use the following command:
+To execute formulas listed in a file, use the following command in the project directory:
 ````
-$  python main.py -i "<comma-separted-list-of-files>"
+$  python main.py -f "<filename>"
 ````
 
-For example, executing `python main.py -i "file1, file2"` would test all the formulas defined in `file1` and `file2`. Input files must have only one formula written on each line, and nothing else in the file.
+For example, executing `python main.py -i "path/examples.txt"` would test all the formulas defined in `examples.txt`. Input files must have only one formula written on each line, and nothing else in the file.
 
 Formulas must use valid syntax and semantics as defined below. Formulas which are not well-formed or use invalid symbols raise SyntaxError exceptions.
 
-### Examples
-The project contains sample PL formulas in `examples/` directory which can be run using the following command from terminal:
+## Executing Test Cases
+The project contains sample PL formulas in the `tests/examples/` directory which can be used to test the SAT solver with the following command in the project directory:
 ````
-$  chmod u+w run-examples.sh
-$  ./run-examples.sh
+$  python -m unittest tests.test_solver
 ````
 This would solve all the formulas from the `examples/` directory and print their results: `Unsatisfiable` or `Satisfiable`.
 
@@ -59,7 +68,7 @@ BasicSAT expects input formulas to follow a certain syntax. The following sectio
 BasicSAT can solve formulas with unary and binary operators listed below. Symbol to be used for each operation is written opposite to its name.
 
 #### Unary Operators
-1) Negation (!)
+1) Negation (~)
 
 #### Binary Operators
 1) Conjunction (&)

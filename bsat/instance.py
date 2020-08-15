@@ -1,5 +1,6 @@
-from .formula import FormulaFactory
-from grammar.parser import Parser
+from .language.exprs import Expression
+from .language.exprs_norm import CNF
+from .grammar.parser import Parser
 from .solver import SATSolver
 
 
@@ -28,8 +29,8 @@ class SATInstance:
             return tree
 
     def find_solutions(self):
-        self.formula = FormulaFactory.create_cnf(self.wff)
-        solutions = SATSolver().solve(self.__get_expression(self.formula.expression))
+        self.formula = CNF(self.wff, from_pbl=True)
+        solutions = SATSolver().solve(self.__get_expression(self.formula.expr.parse_tree))
         assignments = []
         count = 0
         for solution in solutions:
