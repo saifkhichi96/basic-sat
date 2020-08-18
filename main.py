@@ -1,7 +1,6 @@
 import argparse
 
-from bsat import bsat_interactive, solve_file, solve_i
-
+from bsat.solvers import SATSolver, DPLLSolver
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='Solves SATisfiability problems in propositional logic.')
@@ -11,26 +10,68 @@ parser.add_argument('-f', type=str, help='file with a list of PL formulas')
 args = parser.parse_args()
 
 
+def solve(proposition: str, solver: SATSolver):
+    try:
+        # Determine satisfiability
+        problem = solver.solve_proposition(proposition)
+        solvable, cnf, solutions = (not problem.is_contradiction), problem.formula, problem.solutions
+
+        # Print satisfiability results
+        print(f'{proposition} <=> {cnf} ', end='')
+        if solvable:
+            print('is SAT with following assignments:')
+            for i, solution in enumerate(solutions):
+                print("\t{})".format(i + 1), solution)
+        else:
+            print(solvable)
+            print('is UNSAT.')
+
+    except SyntaxError as err:
+        print(f'Expression not well-formed: {err}')
+
+    except RuntimeError as err:
+        print(err)
+
+
+def solve_file(file: str, solver: SATSolver):
+    print(f'Solving Boolean expressions in file: {file}...')
+    with open(file, "r") as f:
+        for proposition in f.readlines():
+            solve(proposition, solver)
+
+
 def main():
+    # Problems would be solved with the DPLLSolver
+    solver = DPLLSolver()
+
+    # case: solving all propositions in a file
     if args.f is not None:
-        file = args.f
-        print(file)
-        results = solve_file(file.strip())
-        for wff, (solvable, cnf, solutions) in results.items():
-            print (wff, '=', cnf, end=' ')
-            if solvable:
-                print ('resolved with following assignments:')
-                for i, solution in enumerate(solutions):
-                    print("\t{})".format(i), solution)
-            else:
-                print ('is not solvable.')
+        file = args.f.strip()
+        solve_file(file, solver)
 
+    # case: solving a single proposition
     elif args.w is not None:
-        wff = args.w
-        solve_i(wff)
+        proposition = args.w.strip()
+        solve(proposition, solver)
 
+    # case: interactive SAT solver
     else:
-        bsat_interactive()
+        print("//---------------------------------------------------//\n"
+              "//  BasicSAT - A 'very' basic SAT solver             //\n"
+              "//                                                   //\n"
+              "//                                                   //\n"
+              "// For documentation and instructions on how to use  //\n"
+              "// BasicSAT, please see Readme. Exit with CTRL+C.    //\n"
+              "//---------------------------------------------------//")
+
+        while True:
+            try:
+                # Get a propositional formula from user
+                proposition = input("\n\n(CTRL+C to exit) Enter a proposition: ").strip()
+                solve(proposition, solver)
+            except KeyboardInterrupt:
+                print()
+                break
 
 
 if __name__ == '__main__':
