@@ -1,9 +1,9 @@
-from .exprs import Expression, Literal, UnaryFormula, BinaryFormula
-from ..grammar.lexer import XOR, IFF, IMPLIES, NOT, AND, OR, TRUE, FALSE
+from . import UnaryFormula, BinaryFormula, ExpressionBuilder
+from .grammar import NOT, AND, OR
 
 
 def distribute_ands(expr):
-    """Applies dirtibutive law where an OR occurs over an AND.
+    """Applies distributive law where an OR occurs over an AND.
     """
     if isinstance(expr, BinaryFormula):
         pq = distribute_ands(expr.operand_1)
@@ -15,7 +15,7 @@ def distribute_ands(expr):
             q = qr.operand_1.parse_tree
             r = qr.operand_2.parse_tree
 
-            expr_n = Expression.build_from_tree([AND, [OR, p, q], [OR, p, r]])
+            expr_n = ExpressionBuilder.from_parse_tree([AND, [OR, p, q], [OR, p, r]])
             tree_n = [AND,
                       distribute_ands(expr_n.operand_1).parse_tree,
                       distribute_ands(expr_n.operand_2).parse_tree]
@@ -25,7 +25,7 @@ def distribute_ands(expr):
             q = pq.operand_2.parse_tree
             r = qr.parse_tree
 
-            expr_n = Expression.build_from_tree([AND, [OR, p, r], [OR, q, r]])
+            expr_n = ExpressionBuilder.from_parse_tree([AND, [OR, p, r], [OR, q, r]])
             tree_n = [AND,
                       distribute_ands(expr_n.operand_1).parse_tree,
                       distribute_ands(expr_n.operand_2).parse_tree]
@@ -39,7 +39,7 @@ def distribute_ands(expr):
     else:
         tree_n = expr.parse_tree
 
-    return Expression.build_from_tree(tree_n)
+    return ExpressionBuilder.from_parse_tree(tree_n)
 
 
 def de_morgans_law(expr):
@@ -59,8 +59,11 @@ def de_morgans_law(expr):
         else:
             op = AND
 
-        t1 = de_morgans_law(expr.operand_1.operand_1.negate()).parse_tree
-        t2 = de_morgans_law(expr.operand_1.operand_2.negate()).parse_tree
+        op1_neg = ExpressionBuilder.from_parse_tree([NOT, expr.operand_1.operand_1.parse_tree])
+        t1 = de_morgans_law(op1_neg).parse_tree
+
+        op2_neg = ExpressionBuilder.from_parse_tree([NOT, expr.operand_1.operand_2.parse_tree])
+        t2 = de_morgans_law(op2_neg).parse_tree
 
         tree_n = [op, t1, t2]
 
@@ -80,4 +83,4 @@ def de_morgans_law(expr):
     else:
         tree_n = expr.parse_tree
 
-    return Expression.build_from_tree(tree_n)
+    return ExpressionBuilder.from_parse_tree(tree_n)

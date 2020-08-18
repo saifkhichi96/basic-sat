@@ -9,7 +9,6 @@ a lexer which tokenizes the input text according to defined vocabulary.
 """
 import ply.lex as lex
 
-
 # List of accepted tokens
 tokens = (
     'LITERAL',
@@ -47,9 +46,10 @@ precedence = (
     ('right', 'NOT'),
 )
 
+
 class Lexer:
     @classmethod
-    def build(self):
+    def build(cls):
         # Regular expression rules for simple tokens
         t_LITERAL = '[a-zA-Z]+'
         t_IFF = r'<->'

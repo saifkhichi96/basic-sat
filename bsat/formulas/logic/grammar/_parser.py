@@ -6,7 +6,7 @@ used to parse propositional boolean logic formulas.
 import ply.yacc as yacc
 
 # Get the token map from the lexer. This is required.
-from .lexer import tokens, precedence, IMPLIES, XOR, IFF, AND, OR, NOT
+from ._lexer import tokens, precedence, IMPLIES, XOR, IFF, AND, OR, NOT
 
 
 class Parser:
@@ -59,38 +59,33 @@ class Parser:
             return not p
 
     @classmethod
-    def build(self):
+    def build(cls):
         def p_expr_paren(p):
-            '''expr : LPAR expr RPAR'''
+            """expr : LPAR expr RPAR"""
             p[0] = p[2]
 
-
         def p_expr_unary(p):
-            '''expr : NOT expr           %prec NOT'''
+            """expr : NOT expr           %prec NOT"""
             p[0] = [p[1], p[2]]
 
-
         def p_expr_binop(p):
-            '''expr : expr IMPLIES expr  %prec IMPLIES
+            """expr : expr IMPLIES expr  %prec IMPLIES
                     | expr IFF expr      %prec IFF
                     | expr XOR expr      %prec XOR
                     | expr OR expr       %prec OR
                     | expr AND expr      %prec AND
-                    '''
+                    """
             p[0] = [p[2], p[1], p[3]]
 
-
         def p_expr_literal(p):
-            '''expr : literal'''
+            """expr : literal"""
             p[0] = p[1]
-
 
         def p_literal(p):
-            '''literal : FALSE
+            """literal : FALSE
                        | TRUE
-                       | LITERAL'''
+                       | LITERAL"""
             p[0] = p[1]
-
 
         # Error rule for syntax errors
         def p_error(p):

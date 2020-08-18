@@ -1,34 +1,13 @@
-from abc import ABC, abstractmethod
-from .exprs import Expression
-from .laws import de_morgans_law, distribute_ands
-from .equiv import simplify_operators
-from ..grammar.lexer import AND, OR, NOT
-
-
-class NF(ABC):
-    def __init__(self, expr, from_pbl=False):
-        if from_pbl:
-            assert isinstance(expr, str)
-            expr = Expression.build_from_pbl(expr)
-
-        self.expr = self._build(expr)
-
-    @abstractmethod
-    def _build(self, expr):
-        return None
-
-
-class NNF(NF):
-    def __init__(self, expr, from_pbl=False):
-        NF.__init__(self, expr, from_pbl)
-
-    def _build(self, expr):
-        return de_morgans_law(expr)
+from .NF import NF
+from .NNF import NNF
+from .logic.grammar import AND, NOT, OR
+from .logic.identities import simplify_operators
+from .logic.laws import distribute_ands
 
 
 class CNF(NF):
-    def __init__(self, expr, from_pbl=False):
-        NF.__init__(self, expr, from_pbl)
+    def __init__(self, expr, from_proposition=False):
+        NF.__init__(self, expr, from_proposition)
 
     def _build(self, expr):
         expr_n = simplify_operators(expr)
