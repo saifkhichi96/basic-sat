@@ -3,11 +3,15 @@
 
 # Build files
 __pycache__/
+build/
+out/
 *.pyc
 *.out
-*/grammar/parsetab.py
-logs.txt
 
+# Logs and other generated files
+parsetab.py
+logs.txt
 
 # OS files
 .DS_STORE
+._*
