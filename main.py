@@ -13,18 +13,11 @@ args = parser.parse_args()
 def solve(proposition: str, solver: SATSolver):
     try:
         # Determine satisfiability
-        problem = solver.solve_proposition(proposition)
-        solvable, cnf, solutions = (not problem.is_contradiction), problem.formula, problem.solutions
+        problem = solver.solve(proposition)
+        cnf, solution = problem.formula, problem.solution
 
         # Print satisfiability results
-        print(f'{proposition} <=> {cnf} ', end='')
-        if solvable:
-            print('is SAT with following assignments:')
-            for i, solution in enumerate(solutions):
-                print("\t{})".format(i + 1), solution)
-        else:
-            print(solvable)
-            print('is UNSAT.')
+        print(f'{proposition} <=> {cnf}\n{solution}')
 
     except SyntaxError as err:
         print(f'Expression not well-formed: {err}')

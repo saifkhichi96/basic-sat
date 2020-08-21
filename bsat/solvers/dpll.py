@@ -1,7 +1,7 @@
-from typing import List
-
-from bsat._core import SATProblem
-from .SATSolver import SATSolver
+"""Implements a solver for SAT problems based the DPLL algorithm.
+"""
+from ..norm import CNF
+from ._solvers import SATSolver, SATSolution
 
 
 class DPLLSolver(SATSolver):
@@ -12,26 +12,12 @@ class DPLLSolver(SATSolver):
     to solve the CNF-SAT problems.
     """
 
-    def solve(self, problem: SATProblem) -> List[str]:
-        """Determines satisfiability of a SAT problem.
-
-        :param problem: The SAT problem to solve.
-        :return: List of assignments satisfying the problem, or an empty list if not satisfiable.
-        """
-        parse_tree = problem.formula.parse_tree
-        solutions = self._find_solutions(parse_tree, dict())
-        assignments = []
-        for solution in solutions:
-            if isinstance(solution, bool):
-                assignments.append(str(solution))
-            elif isinstance(solution, dict):
-                s = ''
-                for var, value in solution.items():
-                    s += f'{var} = {1 if value else 0}, '
-                assignments.append(s[:-2])
-
-        problem.solutions = assignments
-        return assignments
+    def _solve(self, problem: CNF) -> SATSolution:
+        """See base class."""
+        parse_tree = problem.parse_tree
+        assignments = list(self._find_solutions(parse_tree, dict()))
+        solution = SATSolution(problem, assignments)
+        return solution
 
     def _find_solutions(self, F, bindings):
         F = self.__minimize(F, bindings)

@@ -3,21 +3,23 @@
 Defines the grammar of the propositional logic language, which can then be
 used to parse propositional boolean logic formulas.
 """
+
 import ply.yacc as yacc
 
 # Get the token map from the lexer. This is required.
-from ._lexer import tokens, precedence, IMPLIES, XOR, IFF, AND, OR, NOT
+from ._lexer import tokens, precedence  # need this line to build the parser
+from ._lexer import Operators
 
 
 class Parser:
     def __init__(self):
         self.operations = {
-            IFF: self._iff,
-            XOR: self._xor,
-            IMPLIES: self._implies,
-            OR: self._or,
-            AND: self._and,
-            NOT: self._not,
+            Operators.IFF: self._iff,
+            Operators.XOR: self._xor,
+            Operators.IMPLIES: self._implies,
+            Operators.OR: self._or,
+            Operators.AND: self._and,
+            Operators.NOT: self._not,
         }
 
     def _implies(self, p, q):

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from bsat._utils import remove_whitespaces
+from utils._utils import remove_whitespaces
 
 
 class UtilsTest(TestCase):

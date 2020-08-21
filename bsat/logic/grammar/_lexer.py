@@ -7,7 +7,41 @@ a lexer which tokenizes the input text according to defined vocabulary.
 
     lexer = Lexer.build()
 """
+
+from enum import Enum
+
 import ply.lex as lex
+
+
+class _AutoName(Enum):
+    """An enumeration with items named automatically after their values."""
+
+    def _generate_next_value_(name, start, count, last_values):
+        """See base class."""
+        return name
+
+
+class Operators(_AutoName):
+    """An enumeration listing all permitted logical operations."""
+    OR = '|'
+    AND = '&'
+    NOT = '~'
+    XOR = '+'
+    IFF = '<->'
+    IMPLIES = '->'
+
+    def __eq__(self, other):
+        """Checks equality of two operators."""
+        return str(self) == str(other)
+
+    def __hash__(self):
+        """Returns hashcode of the operator."""
+        return id(self)
+
+    def __str__(self):
+        """Returns a printable representation of the operator."""
+        return str(self.value)
+
 
 # List of accepted tokens
 tokens = (
@@ -25,12 +59,12 @@ tokens = (
 )
 
 # Symbols for the listed tokens
-IFF = '<->'
-XOR = '+'
-IMPLIES = '->'
-OR = '|'
-AND = '&'
-NOT = '~'
+OR = Operators.OR
+AND = Operators.AND
+NOT = Operators.NOT
+XOR = Operators.XOR
+IFF = Operators.IFF
+IMPLIES = Operators.IMPLIES
 LPAR = '('
 RPAR = ')'
 FALSE = '0'

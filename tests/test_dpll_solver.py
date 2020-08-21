@@ -12,22 +12,22 @@ class SolverTests(TestCase):
         results = {}
         with open(file, "r") as f:
             for proposition in f.readlines():
-                problem = solver.solve_proposition(proposition)
-                results[proposition] = (not problem.is_contradiction), problem.formula, problem.solutions
+                solution = solver.solve(proposition)
+                results[proposition] = solution.problem, solution
 
         return results
 
     def test_contradictions(self):
         results = self.solve_file(self.__files_path + 'contradiction.txt')
-        for formula, (solvable, _, solutions) in results.items():
-            self.assertFalse(solvable, formula + ' is satisfiable by ' + str(solutions))
+        for formula, (_, solution) in results.items():
+            self.assertEqual(False, solution, formula + ' is satisfiable by ' + str(solution))
 
     def test_tautologies(self):
         results = self.solve_file(self.__files_path + 'tautology.txt')
-        for formula, (solvable, _, _) in results.items():
-            self.assertTrue(solvable, formula + ' is UNSAT')
+        for formula, (_, solution) in results.items():
+            self.assertEqual(True, solution, f'{formula} not a tautology but {solution}')
 
     def test_satisfiable_formulas(self):
         results = self.solve_file(self.__files_path + 'satisfiable.txt')
-        for formula, (solvable, _, _) in results.items():
-            self.assertTrue(solvable, formula + ' is UNSAT')
+        for formula, (_, solution) in results.items():
+            self.assertGreater(len(solution), 0, f'{formula} {solution}')
