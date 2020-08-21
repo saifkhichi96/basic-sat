@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.logic.laws</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.logic.html"><font color="#ffffff">logic</font></a>.laws</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/logic/laws.py">bsat/logic/laws.py</a></font>
+        </td>
+    </tr>
+</table>
+<p><tt>Defines&nbsp;the&nbsp;laws&nbsp;of&nbsp;propositional&nbsp;logic.</tt></p>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#eeaa77">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt><a name="-de_morgans_law"><strong>de_morgans_law</strong></a>(expr: bsat.logic._logic.Expression) -&gt;
+                    bsat.logic._logic.Expression
+                </dt>
+                <dd><tt>Moves&nbsp;negations&nbsp;inwards&nbsp;by&nbsp;repeatedly&nbsp;applying&nbsp;De&nbsp;Morgan's&nbsp;Law&nbsp;and&nbsp;removing&nbsp;double&nbsp;negations.<br>
+                    &nbsp;<br>
+                    De&nbsp;Morgan's&nbsp;Law&nbsp;States&nbsp;moves&nbsp;the&nbsp;negation&nbsp;inwards&nbsp;by&nbsp;inverting&nbsp;the&nbsp;truth&nbsp;value&nbsp;of&nbsp;both&nbsp;operands<br>
+                    and&nbsp;switching&nbsp;AND&nbsp;with&nbsp;OR&nbsp;and&nbsp;vice&nbsp;versa.&nbsp;i.e.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;1)&nbsp;NOT(a&nbsp;OR&nbsp;b)&nbsp;&lt;=&gt;&nbsp;NOT(a)&nbsp;AND&nbsp;NOT(b)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2)&nbsp;NOT(A&nbsp;AND&nbsp;B)&nbsp;&lt;=&gt;&nbsp;NOT(A)&nbsp;&nbsp;OR&nbsp;NOT(B)<br>
+                    &nbsp;<br>
+                    This&nbsp;is&nbsp;a&nbsp;recursive&nbsp;implementation,&nbsp;which&nbsp;also&nbsp;removes&nbsp;double&nbsp;negations&nbsp;which&nbsp;may&nbsp;arise&nbsp;from<br>
+                    application&nbsp;of&nbsp;De&nbsp;Morgan's&nbsp;law,&nbsp;or&nbsp;otherwise.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;expr:&nbsp;The&nbsp;Boolean&nbsp;expression&nbsp;to&nbsp;apply&nbsp;De&nbsp;Morgan's&nbsp;law&nbsp;on.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;equivalent&nbsp;Boolean&nbsp;expression&nbsp;with&nbsp;negations&nbsp;only&nbsp;over&nbsp;literals.</tt>
+                </dd>
+            </dl>
+            <dl>
+                <dt><a name="-distribute_ands"><strong>distribute_ands</strong></a>(expr: bsat.logic._logic.Expression)
+                    -&gt; bsat.logic._logic.Expression
+                </dt>
+                <dd><tt>Applies&nbsp;distributive&nbsp;law&nbsp;where&nbsp;an&nbsp;OR&nbsp;occurs&nbsp;over&nbsp;an&nbsp;AND.<br>
+                    &nbsp;<br>
+                    Recursively&nbsp;applies&nbsp;the&nbsp;following&nbsp;distributive&nbsp;law&nbsp;until&nbsp;it&nbsp;is&nbsp;no&nbsp;longer&nbsp;applicable:<br>
+                    a&nbsp;OR&nbsp;(b&nbsp;AND&nbsp;c)&nbsp;&lt;=&gt;&nbsp;(a&nbsp;OR&nbsp;b)&nbsp;AND&nbsp;(a&nbsp;OR&nbsp;c).<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;expr:&nbsp;The&nbsp;Boolean&nbsp;expression&nbsp;to&nbsp;apply&nbsp;the&nbsp;distributive&nbsp;law&nbsp;on.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;equivalent&nbsp;Boolean&nbsp;expression&nbsp;with&nbsp;all&nbsp;ORs&nbsp;distributed&nbsp;over&nbsp;ANDs.</tt>
+                </dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

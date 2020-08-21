@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.solvers.dpll</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.solvers.html"><font color="#ffffff">solvers</font></a>.dpll</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/solvers/dpll.py">bsat/solvers/dpll.py</a></font>
+        </td>
+    </tr>
+</table>
+<p><tt>Implements&nbsp;a&nbsp;solver&nbsp;for&nbsp;SAT&nbsp;problems&nbsp;based&nbsp;the&nbsp;DPLL&nbsp;algorithm.</tt>
+</p>
+<p>
+    <table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+        <tr bgcolor="#ee77aa">
+            <td colspan=3 valign=bottom>&nbsp;<br>
+                <font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+            <td>&nbsp;</td>
+            <td width="100%">
+                <dl>
+                    <dt><font face="helvetica, arial"><a href="bsat.solvers._solvers.html#SATSolver">bsat.solvers._solvers.SATSolver</a>(<a
+                            href="abc.html#ABC">abc.ABC</a>)
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a href="bsat.solvers.dpll.html#DPLLSolver">DPLLSolver</a>
+                            </font></dt>
+                        </dl>
+                    </dd>
+                </dl>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="DPLLSolver">class <strong>DPLLSolver</strong></a>(<a
+                    href="bsat.solvers._solvers.html#SATSolver">bsat.solvers._solvers.SATSolver</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt>Implements&nbsp;a&nbsp;CNF-SAT&nbsp;solver&nbsp;using&nbsp;the&nbsp;DPLL&nbsp;algorithm.<br>
+            &nbsp;<br>
+            The&nbsp;Davis–Putnam–Logemann–Loveland&nbsp;(DPLL)&nbsp;algorithm&nbsp;is&nbsp;a&nbsp;complete,&nbsp;backtracking-based&nbsp;search&nbsp;algorithm&nbsp;for&nbsp;deciding<br>
+            the&nbsp;satisfiability&nbsp;of&nbsp;propositional&nbsp;logic&nbsp;formulae&nbsp;in&nbsp;conjunctive&nbsp;normal&nbsp;form.&nbsp;This&nbsp;algorithm&nbsp;is&nbsp;implemented&nbsp;here<br>
+            to&nbsp;solve&nbsp;the&nbsp;CNF-SAT&nbsp;problems.<br>&nbsp;</tt></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.solvers.dpll.html#DPLLSolver">DPLLSolver</a></dd>
+                <dd><a href="bsat.solvers._solvers.html#SATSolver">bsat.solvers._solvers.SATSolver</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset()
+            </dl>
+
+            <hr>
+            Methods inherited from <a
+                href="bsat.solvers._solvers.html#SATSolver">bsat.solvers._solvers.SATSolver</a>:<br>
+            <dl>
+                <dt><a name="DPLLSolver-solve"><strong>solve</strong></a>(self, proposition: str) -&gt;
+                    bsat.solvers._solvers.SATSolution
+                </dt>
+                <dd><tt>Determines&nbsp;satisfiability&nbsp;a&nbsp;Boolean&nbsp;expression.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proposition:&nbsp;The&nbsp;Boolean&nbsp;expression&nbsp;to&nbsp;solve.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;input&nbsp;expression&nbsp;formulated&nbsp;as&nbsp;a&nbsp;CNF-SAT&nbsp;problem,&nbsp;including&nbsp;its&nbsp;solutions&nbsp;(if&nbsp;any).</tt>
+                </dd>
+            </dl>
+
+            <hr>
+            Data descriptors inherited from <a href="bsat.solvers._solvers.html#SATSolver">bsat.solvers._solvers.SATSolver</a>:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+</td></tr></table>
+</body>
+</html>

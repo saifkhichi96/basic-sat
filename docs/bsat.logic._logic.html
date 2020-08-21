@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.logic._logic</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.logic.html"><font color="#ffffff">logic</font></a>._logic</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/logic/_logic.py">bsat/logic/_logic.py</a></font>
+        </td>
+    </tr>
+</table>
+<p><tt>Defines&nbsp;the&nbsp;core&nbsp;members&nbsp;of&nbsp;the&nbsp;'logic'&nbsp;package.<br>
+    &nbsp;<br>
+    This&nbsp;is&nbsp;the&nbsp;internal&nbsp;definition&nbsp;of&nbsp;the&nbsp;package,&nbsp;with&nbsp;all&nbsp;the&nbsp;public&nbsp;and&nbsp;private&nbsp;classes&nbsp;defined&nbsp;here.&nbsp;Only&nbsp;the&nbsp;public&nbsp;classes&nbsp;are&nbsp;exported&nbsp;for&nbsp;external&nbsp;use.</tt>
+</p>
+<p>
+    <table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+        <tr bgcolor="#ee77aa">
+            <td colspan=3 valign=bottom>&nbsp;<br>
+                <font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+            <td>&nbsp;</td>
+            <td width="100%">
+                <dl>
+                    <dt><font face="helvetica, arial"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a href="bsat.logic._logic.html#Expression">Expression</a>
+                            </font></dt>
+                            <dd>
+                                <dl>
+                                    <dt><font face="helvetica, arial"><a href="bsat.logic._logic.html#BinaryOperation">BinaryOperation</a>
+                                    </font></dt>
+                                    <dt><font face="helvetica, arial"><a
+                                            href="bsat.logic._logic.html#Literal">Literal</a>
+                                    </font></dt>
+                                    <dt><font face="helvetica, arial"><a href="bsat.logic._logic.html#UnaryOperation">UnaryOperation</a>
+                                    </font></dt>
+                                </dl>
+                            </dd>
+                        </dl>
+                    </dd>
+                </dl>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="BinaryOperation">class
+                <strong>BinaryOperation</strong></a>(<a href="bsat.logic._logic.html#Expression">Expression</a>)</font>
+        </td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#BinaryOperation">BinaryOperation</a>(operator:&nbsp;str,&nbsp;operand_1:&nbsp;bsat.logic._logic.<a
+                href="#Expression">Expression</a>,&nbsp;operand_2:&nbsp;bsat.logic._logic.<a href="#Expression">Expression</a>)<br>
+            &nbsp;<br>
+            A&nbsp;binary&nbsp;operation&nbsp;consists&nbsp;of&nbsp;a&nbsp;binary&nbsp;operator&nbsp;applied&nbsp;to&nbsp;two&nbsp;different&nbsp;operands.<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.logic._logic.html#BinaryOperation">BinaryOperation</a></dd>
+                <dd><a href="bsat.logic._logic.html#Expression">Expression</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="BinaryOperation-__init__"><strong>__init__</strong></a>(self, operator: str, operand_1:
+                    bsat.logic._logic.Expression, operand_2: bsat.logic._logic.Expression)
+                </dt>
+                <dd><tt>Creates&nbsp;a&nbsp;new&nbsp;binary&nbsp;operation.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;operator:&nbsp;The&nbsp;logical&nbsp;operator&nbsp;in&nbsp;this&nbsp;operation.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;operand_1:&nbsp;The&nbsp;first&nbsp;operand&nbsp;in&nbsp;the&nbsp;operation.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;operand_2:&nbsp;The&nbsp;second&nbsp;operand&nbsp;in&nbsp;the&nbsp;operation.</tt>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt><a name="BinaryOperation-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt>
+                <dd><tt>Returns&nbsp;a&nbsp;printable&nbsp;representation&nbsp;of&nbsp;the&nbsp;operation.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties defined here:<br>
+            <dl>
+                <dt><strong>parse_tree</strong></dt>
+                <dd><tt>See&nbsp;base&nbsp;class.</tt></dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset()
+            </dl>
+
+            <hr>
+            Methods inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><a name="BinaryOperation-__eq__"><strong>__eq__</strong></a>(self, obj)</dt>
+                <dd><tt>Checks&nbsp;equality&nbsp;of&nbsp;the&nbsp;two&nbsp;Boolean&nbsp;operations.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>literals</strong></dt>
+                <dd>
+                    <tt>List&nbsp;of&nbsp;unique&nbsp;literals&nbsp;in&nbsp;the&nbsp;recursive&nbsp;formula&nbsp;tree.</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data descriptors inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>__annotations__</strong> = {'operator': &lt;enum 'Operators'&gt;}
+            </dl>
+
+            <dl>
+                <dt><strong>__hash__</strong> = None
+            </dl>
+
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="Expression">class <strong>Expression</strong></a>(<a
+                    href="abc.html#ABC">abc.ABC</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a
+                href="#Expression">Expression</a>(operator=None,&nbsp;operand_1=None,&nbsp;operand_2=None)<br>
+            &nbsp;<br>
+            Abstract&nbsp;representation&nbsp;of&nbsp;a&nbsp;single&nbsp;Boolean&nbsp;logic&nbsp;operation.<br>
+            &nbsp;<br>
+            Operations&nbsp;are&nbsp;saved&nbsp;as&nbsp;recursive&nbsp;trees,&nbsp;where&nbsp;all&nbsp;operands&nbsp;in&nbsp;the&nbsp;operation&nbsp;may&nbsp;themselves<br>
+            be&nbsp;other&nbsp;Boolean&nbsp;operations.<br>
+            &nbsp;<br>
+            Attributes:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;operator:&nbsp;The&nbsp;logical&nbsp;operator&nbsp;in&nbsp;this&nbsp;operation&nbsp;(if&nbsp;any).<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;operand_1:&nbsp;The&nbsp;first&nbsp;operand&nbsp;in&nbsp;the&nbsp;operation&nbsp;(if&nbsp;any).<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;operand_2:&nbsp;The&nbsp;second&nbsp;operand&nbsp;in&nbsp;the&nbsp;operation&nbsp;(if&nbsp;any).<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.logic._logic.html#Expression">Expression</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="Expression-__eq__"><strong>__eq__</strong></a>(self, obj)</dt>
+                <dd><tt>Checks&nbsp;equality&nbsp;of&nbsp;the&nbsp;two&nbsp;Boolean&nbsp;operations.</tt></dd>
+            </dl>
+
+            <dl>
+                <dt><a name="Expression-__init__"><strong>__init__</strong></a>(self, operator=None, operand_1=None,
+                    operand_2=None)
+                </dt>
+                <dd><tt>Creates&nbsp;a&nbsp;new&nbsp;Boolean&nbsp;operation.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;operator:&nbsp;The&nbsp;logical&nbsp;operator&nbsp;in&nbsp;this&nbsp;operation&nbsp;(if&nbsp;any).<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;operand_1:&nbsp;The&nbsp;first&nbsp;operand&nbsp;in&nbsp;the&nbsp;operation&nbsp;(if&nbsp;any).<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;operand_2:&nbsp;The&nbsp;second&nbsp;operand&nbsp;in&nbsp;the&nbsp;operation&nbsp;(if&nbsp;any).</tt>
+                </dd>
+            </dl>
+
+            <hr>
+            Readonly properties defined here:<br>
+            <dl>
+                <dt><strong>literals</strong></dt>
+                <dd>
+                    <tt>List&nbsp;of&nbsp;unique&nbsp;literals&nbsp;in&nbsp;the&nbsp;recursive&nbsp;formula&nbsp;tree.</tt>
+                </dd>
+            </dl>
+            <dl>
+                <dt><strong>parse_tree</strong></dt>
+                <dd><tt>Parse&nbsp;tree&nbsp;of&nbsp;the&nbsp;recursive&nbsp;Boolean&nbsp;operation&nbsp;as&nbsp;a&nbsp;preorder,&nbsp;nested&nbsp;list.</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data descriptors defined here:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset({'parse_tree'})
+            </dl>
+
+            <dl>
+                <dt><strong>__annotations__</strong> = {'operator': &lt;enum 'Operators'&gt;}
+            </dl>
+
+            <dl>
+                <dt><strong>__hash__</strong> = None
+            </dl>
+
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="Literal">class <strong>Literal</strong></a>(<a
+                    href="bsat.logic._logic.html#Expression">Expression</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#Literal">Literal</a>(value)<br>
+            &nbsp;<br>
+            A&nbsp;literal&nbsp;is&nbsp;a&nbsp;single&nbsp;variable&nbsp;with&nbsp;no&nbsp;operations.<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.logic._logic.html#Literal">Literal</a></dd>
+                <dd><a href="bsat.logic._logic.html#Expression">Expression</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="Literal-__init__"><strong>__init__</strong></a>(self, value)</dt>
+                <dd><tt>Creates&nbsp;a&nbsp;new&nbsp;literal.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;value:&nbsp;Value&nbsp;of&nbsp;the&nbsp;variable.</tt></dd>
+            </dl>
+
+            <dl>
+                <dt><a name="Literal-__str__"><strong>__str__</strong></a>(self)</dt>
+                <dd><tt>Returns&nbsp;a&nbsp;printable&nbsp;representation&nbsp;of&nbsp;the&nbsp;literal.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties defined here:<br>
+            <dl>
+                <dt><strong>parse_tree</strong></dt>
+                <dd><tt>See&nbsp;base&nbsp;class.</tt></dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset()
+            </dl>
+
+            <hr>
+            Methods inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><a name="Literal-__eq__"><strong>__eq__</strong></a>(self, obj)</dt>
+                <dd><tt>Checks&nbsp;equality&nbsp;of&nbsp;the&nbsp;two&nbsp;Boolean&nbsp;operations.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>literals</strong></dt>
+                <dd>
+                    <tt>List&nbsp;of&nbsp;unique&nbsp;literals&nbsp;in&nbsp;the&nbsp;recursive&nbsp;formula&nbsp;tree.</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data descriptors inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>__annotations__</strong> = {'operator': &lt;enum 'Operators'&gt;}
+            </dl>
+
+            <dl>
+                <dt><strong>__hash__</strong> = None
+            </dl>
+
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="UnaryOperation">class <strong>UnaryOperation</strong></a>(<a
+                    href="bsat.logic._logic.html#Expression">Expression</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#UnaryOperation">UnaryOperation</a>(operator:&nbsp;str,&nbsp;value:&nbsp;bsat.logic._logic.<a
+                href="#Expression">Expression</a>)<br>
+            &nbsp;<br>
+            A&nbsp;unary&nbsp;operation&nbsp;consists&nbsp;of&nbsp;a&nbsp;unary&nbsp;operator&nbsp;applied&nbsp;on&nbsp;a&nbsp;single&nbsp;operand.<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.logic._logic.html#UnaryOperation">UnaryOperation</a></dd>
+                <dd><a href="bsat.logic._logic.html#Expression">Expression</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="UnaryOperation-__init__"><strong>__init__</strong></a>(self, operator: str, value:
+                    bsat.logic._logic.Expression)
+                </dt>
+                <dd><tt>Creates&nbsp;a&nbsp;new&nbsp;unary&nbsp;operation.</tt></dd>
+            </dl>
+
+            <dl>
+                <dt><a name="UnaryOperation-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt>
+                <dd><tt>Returns&nbsp;a&nbsp;printable&nbsp;representation&nbsp;of&nbsp;the&nbsp;operation.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties defined here:<br>
+            <dl>
+                <dt><strong>parse_tree</strong></dt>
+                <dd><tt>See&nbsp;base&nbsp;class.</tt></dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset()
+            </dl>
+
+            <hr>
+            Methods inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><a name="UnaryOperation-__eq__"><strong>__eq__</strong></a>(self, obj)</dt>
+                <dd><tt>Checks&nbsp;equality&nbsp;of&nbsp;the&nbsp;two&nbsp;Boolean&nbsp;operations.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>literals</strong></dt>
+                <dd>
+                    <tt>List&nbsp;of&nbsp;unique&nbsp;literals&nbsp;in&nbsp;the&nbsp;recursive&nbsp;formula&nbsp;tree.</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data descriptors inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes inherited from <a href="bsat.logic._logic.html#Expression">Expression</a>:<br>
+            <dl>
+                <dt><strong>__annotations__</strong> = {'operator': &lt;enum 'Operators'&gt;}
+            </dl>
+
+            <dl>
+                <dt><strong>__hash__</strong> = None
+            </dl>
+
+        </td>
+    </tr>
+</table>
+</td></tr></table><p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#55aa55">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%"><strong>Any</strong> = typing.Any<br>
+            <strong>FALSE</strong> = '0'<br>
+            <strong>List</strong> = typing.List<br>
+            <strong>TRUE</strong> = '1'
+        </td>
+    </tr>
+</table>
+</body>
+</html>

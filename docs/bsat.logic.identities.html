@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.logic.identities</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.logic.html"><font color="#ffffff">logic</font></a>.identities</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/logic/identities.py">bsat/logic/identities.py</a></font>
+        </td>
+    </tr>
+</table>
+<p>
+    <tt>Defines&nbsp;Boolean&nbsp;identities&nbsp;which&nbsp;define&nbsp;equivalence&nbsp;of&nbsp;logic&nbsp;operators.</tt>
+</p>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#eeaa77">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt><a name="-iff_equivalence"><strong>iff_equivalence</strong></a>(expr: bsat.logic._logic.Expression)
+                    -&gt; bsat.logic._logic.Expression
+                </dt>
+                <dd><tt>Removes&nbsp;all&nbsp;logical&nbsp;bi-conditionals&nbsp;(IFF)&nbsp;from&nbsp;a&nbsp;Boolean&nbsp;formula.<br>
+                    &nbsp;<br>
+                    All&nbsp;logical&nbsp;bi-conditional&nbsp;(IFF)&nbsp;operations&nbsp;are&nbsp;replaced&nbsp;by&nbsp;an&nbsp;equivalent&nbsp;logical&nbsp;operation.<br>
+                    By&nbsp;definition&nbsp;a&nbsp;bi-conditional&nbsp;is&nbsp;same&nbsp;as&nbsp;AND&nbsp;of&nbsp;two&nbsp;implications&nbsp;in&nbsp;both&nbsp;directions,&nbsp;i.e.<br>
+                    a&nbsp;IFF&nbsp;b&nbsp;=&nbsp;(a&nbsp;IMPLIES&nbsp;b)&nbsp;AND&nbsp;(b&nbsp;IMPLIES&nbsp;a)<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;expr:&nbsp;The&nbsp;expression&nbsp;to&nbsp;remove&nbsp;the&nbsp;IFFs&nbsp;from.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;equivalent&nbsp;expression&nbsp;without&nbsp;IFF&nbsp;operations.</tt>
+                </dd>
+            </dl>
+            <dl>
+                <dt><a name="-implication_equivalence"><strong>implication_equivalence</strong></a>(expr:
+                    bsat.logic._logic.Expression) -&gt; bsat.logic._logic.Expression
+                </dt>
+                <dd><tt>Removes&nbsp;all&nbsp;logical&nbsp;implications&nbsp;(IMPLIES)&nbsp;from&nbsp;a&nbsp;Boolean&nbsp;formula.<br>
+                    &nbsp;<br>
+                    All&nbsp;logical&nbsp;implication&nbsp;(IMPLIES)&nbsp;operations&nbsp;are&nbsp;replaced&nbsp;by&nbsp;an&nbsp;equivalent&nbsp;logical&nbsp;operation.<br>
+                    By&nbsp;definition&nbsp;an&nbsp;implication&nbsp;has&nbsp;the&nbsp;following&nbsp;equivalence:&nbsp;a&nbsp;IMPLIES&nbsp;b&nbsp;=&nbsp;NOT(a)&nbsp;OR&nbsp;b<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;expr:&nbsp;the&nbsp;expression&nbsp;to&nbsp;remove&nbsp;the&nbsp;IMPLIES&nbsp;operations&nbsp;from.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;equivalent&nbsp;expression&nbsp;without&nbsp;IMPLIES&nbsp;operations.</tt>
+                </dd>
+            </dl>
+            <dl>
+                <dt><a name="-simplify_operators"><strong>simplify_operators</strong></a>(expr:
+                    bsat.logic._logic.Expression) -&gt; bsat.logic._logic.Expression
+                </dt>
+                <dd><tt>Simplifies&nbsp;an&nbsp;expression&nbsp;by&nbsp;reducing&nbsp;all&nbsp;logical&nbsp;operators&nbsp;to&nbsp;AND,&nbsp;OR&nbsp;and&nbsp;NOT.<br>
+                    &nbsp;<br>
+                    Boolean&nbsp;identities&nbsp;are&nbsp;applied&nbsp;to&nbsp;systematically&nbsp;replace&nbsp;all&nbsp;exclusive&nbsp;OR,&nbsp;implication<br>
+                    and&nbsp;logical&nbsp;bi-conditional&nbsp;operators&nbsp;with&nbsp;the&nbsp;three&nbsp;basic&nbsp;logic&nbsp;operators,&nbsp;AND,&nbsp;OR&nbsp;and<br>
+                    NOT.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;expr:&nbsp;The&nbsp;expression&nbsp;to&nbsp;simplify.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;equivalent&nbsp;expression&nbsp;with&nbsp;no&nbsp;complex&nbsp;logical&nbsp;operators.</tt>
+                </dd>
+            </dl>
+            <dl>
+                <dt><a name="-xor_equivalence"><strong>xor_equivalence</strong></a>(expr: bsat.logic._logic.Expression)
+                    -&gt; bsat.logic._logic.Expression
+                </dt>
+                <dd><tt>Removes&nbsp;all&nbsp;XORs&nbsp;from&nbsp;a&nbsp;Boolean&nbsp;formula.<br>
+                    &nbsp;<br>
+                    All&nbsp;XOR&nbsp;operations&nbsp;are&nbsp;replaced&nbsp;by&nbsp;an&nbsp;equivalent&nbsp;logical&nbsp;operation.&nbsp;By&nbsp;definition,&nbsp;XOR<br>
+                    is&nbsp;same&nbsp;as&nbsp;the&nbsp;negation&nbsp;of&nbsp;logical&nbsp;bi-conditional&nbsp;(IFF),&nbsp;i.e.&nbsp;a&nbsp;XOR&nbsp;b&nbsp;=&nbsp;NOT(a&nbsp;IFF&nbsp;b)<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;expr:&nbsp;The&nbsp;expression&nbsp;to&nbsp;remove&nbsp;the&nbsp;XORs&nbsp;from.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;equivalent&nbsp;expression&nbsp;without&nbsp;XOR&nbsp;operations.</tt>
+                </dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

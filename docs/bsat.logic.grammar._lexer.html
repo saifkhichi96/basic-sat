@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.logic.grammar._lexer</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.logic.html"><font color="#ffffff">logic</font></a>.<a
+                    href="bsat.logic.grammar.html"><font color="#ffffff">grammar</font></a>._lexer</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/logic/grammar/_lexer.py">bsat/logic/grammar/_lexer.py</a></font>
+        </td>
+    </tr>
+</table>
+<p><tt>Builds&nbsp;a&nbsp;tokenizer&nbsp;for&nbsp;propositional&nbsp;logic&nbsp;expressions.<br>
+    &nbsp;<br>
+    Defines&nbsp;a&nbsp;vocabulary&nbsp;for&nbsp;writing&nbsp;propositional&nbsp;logic&nbsp;expressions,&nbsp;and&nbsp;builds<br>
+    a&nbsp;lexer&nbsp;which&nbsp;tokenizes&nbsp;the&nbsp;input&nbsp;text&nbsp;according&nbsp;to&nbsp;defined&nbsp;vocabulary.<br>
+    &nbsp;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;Typical&nbsp;usage&nbsp;example:<br>
+    &nbsp;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;lexer&nbsp;=&nbsp;<a href="#Lexer">Lexer</a>.build()</tt></p>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#aa55cc">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <table summary="list" width="100%">
+                <tr>
+                    <td valign=top width="25%"><a href="ply.lex.html">ply.lex</a><br>
+                    </td>
+                    <td valign=top width="25%"></td>
+                    <td valign=top width="25%"></td>
+                    <td valign=top width="25%"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<p>
+    <table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+        <tr bgcolor="#ee77aa">
+            <td colspan=3 valign=bottom>&nbsp;<br>
+                <font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+            <td>&nbsp;</td>
+            <td width="100%">
+                <dl>
+                    <dt><font face="helvetica, arial"><a
+                            href="bsat.logic.grammar._lexer.html#_AutoName">_AutoName</a>(<a href="enum.html#Enum">enum.Enum</a>)
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a href="bsat.logic.grammar._lexer.html#Operators">Operators</a>
+                            </font></dt>
+                        </dl>
+                    </dd>
+                    <dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a href="bsat.logic.grammar._lexer.html#Lexer">Lexer</a>
+                            </font></dt>
+                        </dl>
+                    </dd>
+                </dl>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="Lexer">class <strong>Lexer</strong></a>(<a
+                    href="builtins.html#object">builtins.object</a>)</font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%">Class methods defined here:<br>
+            <dl>
+                <dt><a name="Lexer-build"><strong>build</strong></a>()<font color="#909090"><font
+                        face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt>
+            </dl>
+
+            <hr>
+            Data descriptors defined here:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="Operators">class <strong>Operators</strong></a>(<a
+                    href="bsat.logic.grammar._lexer.html#_AutoName">_AutoName</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#Operators">Operators</a>(value,&nbsp;names=None,&nbsp;*,&nbsp;module=None,&nbsp;qualname=None,&nbsp;type=None,&nbsp;start=1)<br>
+            &nbsp;<br>
+            An&nbsp;enumeration&nbsp;listing&nbsp;all&nbsp;permitted&nbsp;logical&nbsp;operations.<br>&nbsp;</tt></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.logic.grammar._lexer.html#Operators">Operators</a></dd>
+                <dd><a href="bsat.logic.grammar._lexer.html#_AutoName">_AutoName</a></dd>
+                <dd><a href="enum.html#Enum">enum.Enum</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>AND</strong> = &lt;Operators.AND: '&amp;'&gt;
+            </dl>
+
+            <dl>
+                <dt><strong>IFF</strong> = &lt;Operators.IFF: '&lt;-&gt;'&gt;
+            </dl>
+
+            <dl>
+                <dt><strong>IMPLIES</strong> = &lt;Operators.IMPLIES: '-&gt;'&gt;
+            </dl>
+
+            <dl>
+                <dt><strong>NOT</strong> = &lt;Operators.NOT: '~'&gt;
+            </dl>
+
+            <dl>
+                <dt><strong>OR</strong> = &lt;Operators.OR: '|'&gt;
+            </dl>
+
+            <dl>
+                <dt><strong>XOR</strong> = &lt;Operators.XOR: '+'&gt;
+            </dl>
+
+            <hr>
+            Data descriptors inherited from <a href="enum.html#Enum">enum.Enum</a>:<br>
+            <dl>
+                <dt><strong>name</strong></dt>
+                <dd><tt>The&nbsp;name&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>value</strong></dt>
+                <dd><tt>The&nbsp;value&nbsp;of&nbsp;the&nbsp;Enum&nbsp;member.</tt></dd>
+            </dl>
+            <hr>
+            Readonly properties inherited from <a href="enum.html#EnumMeta">enum.EnumMeta</a>:<br>
+            <dl>
+                <dt><strong>__members__</strong></dt>
+                <dd><tt>Returns&nbsp;a&nbsp;mapping&nbsp;of&nbsp;member&nbsp;name-&gt;value.<br>
+                    &nbsp;<br>
+                    This&nbsp;mapping&nbsp;lists&nbsp;all&nbsp;enum&nbsp;members,&nbsp;including&nbsp;aliases.&nbsp;Note&nbsp;that&nbsp;this<br>
+                    is&nbsp;a&nbsp;read-only&nbsp;view&nbsp;of&nbsp;the&nbsp;internal&nbsp;mapping.</tt></dd>
+            </dl>
+        </td>
+    </tr>
+</table>
+</td></tr></table><p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#55aa55">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%"><strong>AND</strong> = &lt;Operators.AND: '&amp;'&gt;<br>
+            <strong>FALSE</strong> = '0'<br>
+            <strong>IFF</strong> = &lt;Operators.IFF: '&lt;-&gt;'&gt;<br>
+            <strong>IMPLIES</strong> = &lt;Operators.IMPLIES: '-&gt;'&gt;<br>
+            <strong>LPAR</strong> = '('<br>
+            <strong>NOT</strong> = &lt;Operators.NOT: '~'&gt;<br>
+            <strong>OR</strong> = &lt;Operators.OR: '|'&gt;<br>
+            <strong>RPAR</strong> = ')'<br>
+            <strong>TRUE</strong> = '1'<br>
+            <strong>XOR</strong> = &lt;Operators.XOR: '+'&gt;<br>
+            <strong>precedence</strong> = (('left', 'IFF'), ('left', 'XOR'), ('left', 'IMPLIES'), ('left', 'OR'),
+            ('left', 'AND'), ('right', 'NOT'))<br>
+            <strong>tokens</strong> = ('LITERAL', 'IFF', 'XOR', 'IMPLIES', 'OR', 'AND', 'NOT', 'LPAR', 'RPAR', 'FALSE',
+            'TRUE')
+        </td>
+    </tr>
+</table>
+</body>
+</html>

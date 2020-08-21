@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.solvers._solvers</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.solvers.html"><font color="#ffffff">solvers</font></a>._solvers</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/solvers/_solvers.py">bsat/solvers/_solvers.py</a></font>
+        </td>
+    </tr>
+</table>
+<p><tt>Defines&nbsp;core&nbsp;members&nbsp;of&nbsp;the&nbsp;'solvers'&nbsp;package.<br>
+    &nbsp;<br>
+    This&nbsp;is&nbsp;the&nbsp;internal&nbsp;definition&nbsp;of&nbsp;the&nbsp;package,&nbsp;with&nbsp;the&nbsp;private&nbsp;classes&nbsp;and&nbsp;other&nbsp;common&nbsp;operations&nbsp;defined&nbsp;here.&nbsp;Specific&nbsp;SAT&nbsp;solving&nbsp;algorithms&nbsp;are&nbsp;defined&nbsp;in&nbsp;their&nbsp;own&nbsp;modules.&nbsp;Only&nbsp;concrete&nbsp;solvers&nbsp;are&nbsp;exported&nbsp;for&nbsp;external&nbsp;use.</tt>
+</p>
+<p>
+    <table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+        <tr bgcolor="#ee77aa">
+            <td colspan=3 valign=bottom>&nbsp;<br>
+                <font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+            <td>&nbsp;</td>
+            <td width="100%">
+                <dl>
+                    <dt><font face="helvetica, arial"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a
+                                    href="bsat.solvers._solvers.html#SATSolver">SATSolver</a>
+                            </font></dt>
+                        </dl>
+                    </dd>
+                    <dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a
+                                    href="bsat.solvers._solvers.html#Assignment">Assignment</a>
+                            </font></dt>
+                            <dt><font face="helvetica, arial"><a href="bsat.solvers._solvers.html#SATSolution">SATSolution</a>
+                            </font></dt>
+                        </dl>
+                    </dd>
+                </dl>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="Assignment">class <strong>Assignment</strong></a>(<a
+                    href="builtins.html#object">builtins.object</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#Assignment">Assignment</a>(truth)<br>
+            &nbsp;<br>
+            Exactly&nbsp;one&nbsp;set&nbsp;of&nbsp;truth&nbsp;values&nbsp;which&nbsp;satisfy&nbsp;a&nbsp;Boolean&nbsp;formula.<br>
+            &nbsp;<br>
+            An&nbsp;assignment&nbsp;consists&nbsp;of&nbsp;truth&nbsp;values&nbsp;for&nbsp;all&nbsp;the&nbsp;variables&nbsp;in&nbsp;the&nbsp;Boolean&nbsp;formula<br>
+            such&nbsp;that&nbsp;the&nbsp;whole&nbsp;formula&nbsp;evaluates&nbsp;to&nbsp;True.&nbsp;If&nbsp;the&nbsp;formula&nbsp;is&nbsp;always&nbsp;satisfiable<br>
+            (i.e.&nbsp;it&nbsp;is&nbsp;a&nbsp;tautology),&nbsp;then&nbsp;the&nbsp;assignment&nbsp;is&nbsp;given&nbsp;as&nbsp;True.&nbsp;Similarly,&nbsp;if&nbsp;the<br>
+            formula&nbsp;is&nbsp;unsatisfiable,&nbsp;the&nbsp;assignment&nbsp;is&nbsp;given&nbsp;as&nbsp;False.<br>
+            &nbsp;<br>
+            Attributes:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;_truth:&nbsp;A&nbsp;dictionary&nbsp;with&nbsp;truth&nbsp;values&nbsp;of&nbsp;the&nbsp;variables,&nbsp;or&nbsp;a&nbsp;boolean.<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">Methods defined here:<br>
+            <dl>
+                <dt><a name="Assignment-__eq__"><strong>__eq__</strong></a>(self, other) -&gt; bool</dt>
+                <dd><tt>Checks&nbsp;equality&nbsp;of&nbsp;two&nbsp;assignments.<br>
+                    &nbsp;<br>
+                    Two&nbsp;assignments&nbsp;are&nbsp;equal&nbsp;if&nbsp;both&nbsp;have&nbsp;same&nbsp;truth&nbsp;values&nbsp;for&nbsp;same&nbsp;variables.</tt>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt><a name="Assignment-__init__"><strong>__init__</strong></a>(self, truth)</dt>
+                <dd><tt>Inits&nbsp;an&nbsp;assignment&nbsp;by&nbsp;saving&nbsp;the&nbsp;truth&nbsp;values.</tt></dd>
+            </dl>
+
+            <dl>
+                <dt><a name="Assignment-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt>
+                <dd><tt>Returns&nbsp;a&nbsp;printable&nbsp;string&nbsp;listing&nbsp;the&nbsp;truth&nbsp;values.</tt>
+                </dd>
+            </dl>
+
+            <hr>
+            Data descriptors defined here:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__hash__</strong> = None
+            </dl>
+
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="SATSolution">class
+                <strong>SATSolution</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#SATSolution">SATSolution</a>(problem:&nbsp;bsat.norm._norm.CNF,&nbsp;assignments:&nbsp;List[Any])<br>
+            &nbsp;<br>
+            Solution&nbsp;of&nbsp;a&nbsp;CNF-SAT&nbsp;problem.<br>
+            &nbsp;<br>
+            Attributes:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;problem:&nbsp;The&nbsp;CNF&nbsp;formula&nbsp;to&nbsp;check&nbsp;satisfiability.<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">Methods defined here:<br>
+            <dl>
+                <dt><a name="SATSolution-__eq__"><strong>__eq__</strong></a>(self, other) -&gt; bool</dt>
+                <dd><tt>Checks&nbsp;equality&nbsp;of&nbsp;two&nbsp;solutions.<br>
+                    &nbsp;<br>
+                    Two&nbsp;solutions&nbsp;are&nbsp;equal&nbsp;if&nbsp;all&nbsp;their&nbsp;assignments&nbsp;are&nbsp;equal.</tt>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt><a name="SATSolution-__init__"><strong>__init__</strong></a>(self, problem: bsat.norm._norm.CNF,
+                    assignments: List[Any])
+                </dt>
+                <dd><tt>Inits&nbsp;a&nbsp;solution&nbsp;for&nbsp;a&nbsp;CNF-SAT&nbsp;problem.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;problem:&nbsp;The&nbsp;CNF&nbsp;formula&nbsp;to&nbsp;check&nbsp;satisfiability.<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;assignments:&nbsp;List&nbsp;of&nbsp;all&nbsp;assignments&nbsp;(if&nbsp;any)&nbsp;solving&nbsp;the&nbsp;formula.</tt>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt><a name="SATSolution-__len__"><strong>__len__</strong></a>(self) -&gt; int</dt>
+                <dd><tt>Number&nbsp;of&nbsp;assignments&nbsp;satisfying&nbsp;the&nbsp;formula.</tt></dd>
+            </dl>
+
+            <dl>
+                <dt><a name="SATSolution-__str__"><strong>__str__</strong></a>(self) -&gt; str</dt>
+                <dd><tt>Returns&nbsp;a&nbsp;printable&nbsp;representation&nbsp;of&nbsp;the&nbsp;solution.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties defined here:<br>
+            <dl>
+                <dt><strong>assignments</strong></dt>
+                <dd><tt>List&nbsp;of&nbsp;assignments&nbsp;satisfying&nbsp;the&nbsp;formula&nbsp;(or&nbsp;empty&nbsp;list).</tt>
+                </dd>
+            </dl>
+            <dl>
+                <dt><strong>is_false</strong></dt>
+                <dd><tt>Checks&nbsp;if&nbsp;the&nbsp;problem&nbsp;is&nbsp;unsatisfiable.</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>is_true</strong></dt>
+                <dd><tt>Checks&nbsp;if&nbsp;the&nbsp;problem&nbsp;is&nbsp;always&nbsp;satisfiable.</tt></dd>
+            </dl>
+            <hr>
+            Data descriptors defined here:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__hash__</strong> = None
+            </dl>
+
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="SATSolver">class <strong>SATSolver</strong></a>(<a
+                    href="abc.html#ABC">abc.ABC</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt>Defines&nbsp;an&nbsp;interface&nbsp;for&nbsp;algorithms&nbsp;to&nbsp;solve&nbsp;CNF-SAT&nbsp;problems.<br>&nbsp;</tt>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.solvers._solvers.html#SATSolver">SATSolver</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="SATSolver-solve"><strong>solve</strong></a>(self, proposition: str) -&gt;
+                    bsat.solvers._solvers.SATSolution
+                </dt>
+                <dd><tt>Determines&nbsp;satisfiability&nbsp;a&nbsp;Boolean&nbsp;expression.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;proposition:&nbsp;The&nbsp;Boolean&nbsp;expression&nbsp;to&nbsp;solve.<br>
+                    &nbsp;<br>
+                    Returns:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;input&nbsp;expression&nbsp;formulated&nbsp;as&nbsp;a&nbsp;CNF-SAT&nbsp;problem,&nbsp;including&nbsp;its&nbsp;solutions&nbsp;(if&nbsp;any).</tt>
+                </dd>
+            </dl>
+
+            <hr>
+            Data descriptors defined here:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset({'_solve'})
+            </dl>
+
+        </td>
+    </tr>
+</table>
+</td></tr></table><p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#55aa55">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%"><strong>Any</strong> = typing.Any<br>
+            <strong>FALSE</strong> = '0'<br>
+            <strong>List</strong> = typing.List<br>
+            <strong>TRUE</strong> = '1'
+        </td>
+    </tr>
+</table>
+</body>
+</html>

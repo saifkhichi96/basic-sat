@@ -2,7 +2,7 @@
 
 BasicSAT is a simple SAT solver written in Python. It uses a very naive implementation of [DPLL algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) to find satisfiability of a given [propositional formula](https://en.wikipedia.org/wiki/Propositional_formula).
 
-BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL statements are first converted to conjunctive normal form (CNF) before being given to the SAT solver to determine its satisfiability.
+BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL statements are first converted to conjunctive normal form (CNF) before being given to the SAT solver to determine its satisfiability. See complete [documentation here](docs/).
 
 ## Releases
 | Version | Description |

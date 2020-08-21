@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang='en'>
+<head><title>Python: module bsat.norm._norm</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+</head>
+<body bgcolor="#f0f0f8">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="heading" width="100%">
+    <tr bgcolor="#7799ee">
+        <td valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="bsat.html"><font
+                    color="#ffffff">bsat</font></a>.<a href="bsat.norm.html"><font color="#ffffff">norm</font></a>._norm</strong></big></big></font>
+        </td
+        >
+        <td align=right valign=bottom
+        ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a
+                href="../bsat/norm/_norm.py">bsat/norm/_norm.py</a></font>
+        </td>
+    </tr>
+</table>
+<p><tt>Defines&nbsp;all&nbsp;the&nbsp;classes&nbsp;in&nbsp;the&nbsp;'norm'&nbsp;package.<br>
+    &nbsp;<br>
+    This&nbsp;is&nbsp;the&nbsp;internal&nbsp;definition&nbsp;of&nbsp;the&nbsp;package,&nbsp;with&nbsp;all&nbsp;the&nbsp;public&nbsp;and&nbsp;private&nbsp;classes&nbsp;defined&nbsp;here.&nbsp;Only&nbsp;the&nbsp;public&nbsp;classes&nbsp;are&nbsp;exported&nbsp;for&nbsp;external&nbsp;use.</tt>
+</p>
+<p>
+    <table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+        <tr bgcolor="#ee77aa">
+            <td colspan=3 valign=bottom>&nbsp;<br>
+                <font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td>
+        </tr>
+
+        <tr>
+            <td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+            <td>&nbsp;</td>
+            <td width="100%">
+                <dl>
+                    <dt><font face="helvetica, arial"><a href="bsat.norm._norm.html#_NF">_NF</a>(<a href="abc.html#ABC">abc.ABC</a>)
+                    </font></dt>
+                    <dd>
+                        <dl>
+                            <dt><font face="helvetica, arial"><a href="bsat.norm._norm.html#CNF">CNF</a>
+                            </font></dt>
+                            <dt><font face="helvetica, arial"><a href="bsat.norm._norm.html#NNF">NNF</a>
+                            </font></dt>
+                        </dl>
+                    </dd>
+                </dl>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="CNF">class <strong>CNF</strong></a>(<a
+                    href="bsat.norm._norm.html#_NF">_NF</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#CNF">CNF</a>(formula:&nbsp;str)<br>
+            &nbsp;<br>
+            Defines&nbsp;a&nbsp;Boolean&nbsp;formula&nbsp;in&nbsp;the&nbsp;conjunctive&nbsp;normal&nbsp;form.<br>
+            &nbsp;<br>
+            In&nbsp;Boolean&nbsp;logic,&nbsp;a&nbsp;formula&nbsp;is&nbsp;in&nbsp;conjunctive&nbsp;normal&nbsp;form&nbsp;(<a
+                    href="#CNF">CNF</a>)&nbsp;or&nbsp;clausal&nbsp;normal&nbsp;form&nbsp;if<br>
+            it&nbsp;is&nbsp;a&nbsp;conjunction&nbsp;of&nbsp;one&nbsp;or&nbsp;more&nbsp;clauses,&nbsp;where&nbsp;a&nbsp;clause&nbsp;is&nbsp;a&nbsp;disjunction&nbsp;of&nbsp;literals;<br>
+            otherwise&nbsp;put,&nbsp;it&nbsp;is&nbsp;an&nbsp;AND&nbsp;of&nbsp;ORs.<br>&nbsp;</tt></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.norm._norm.html#CNF">CNF</a></dd>
+                <dd><a href="bsat.norm._norm.html#_NF">_NF</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="CNF-__init__"><strong>__init__</strong></a>(self, formula: str)</dt>
+                <dd><tt>Inits&nbsp;the&nbsp;<a href="#CNF">CNF</a>&nbsp;formula.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;formula:&nbsp;The&nbsp;Boolean&nbsp;formula&nbsp;to&nbsp;represent&nbsp;in&nbsp;<a
+                            href="#CNF">CNF</a>.</tt></dd>
+            </dl>
+
+            <dl>
+                <dt><a name="CNF-__str__"><strong>__str__</strong></a>(self)</dt>
+                <dd><tt>See&nbsp;base&nbsp;class.</tt></dd>
+            </dl>
+
+            <hr>
+            Readonly properties defined here:<br>
+            <dl>
+                <dt><strong>clauses</strong></dt>
+                <dd><tt>List&nbsp;of&nbsp;clauses&nbsp;in&nbsp;the&nbsp;CNF.</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>dimacs</strong></dt>
+                <dd><tt>The&nbsp;DIMACS&nbsp;CNF&nbsp;representation&nbsp;of&nbsp;the&nbsp;CNF&nbsp;formula.</tt></dd>
+            </dl>
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset()
+            </dl>
+
+            <hr>
+            Readonly properties inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><strong>max_solutions</strong></dt>
+                <dd><tt>Maximum&nbsp;possible&nbsp;solutions&nbsp;for&nbsp;this&nbsp;formula.<br>
+                    &nbsp;<br>
+                    Number&nbsp;of&nbsp;possible&nbsp;solutions&nbsp;depends&nbsp;on&nbsp;the&nbsp;number&nbsp;of&nbsp;literals&nbsp;in&nbsp;the&nbsp;formula,&nbsp;N<br>
+                    and&nbsp;is&nbsp;given&nbsp;by&nbsp;2^N.</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>parse_tree</strong></dt>
+                <dd><tt>Parse&nbsp;tree&nbsp;of&nbsp;the&nbsp;NF&nbsp;formula&nbsp;as&nbsp;a&nbsp;preorder,&nbsp;nested&nbsp;list.</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data descriptors inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><strong>__annotations__</strong> = {'_expr': &lt;class 'bsat.logic._logic.Expression'&gt;}
+            </dl>
+
+        </td>
+    </tr>
+</table>
+<p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#ffc8d8">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#000000" face="helvetica, arial"><a name="NNF">class <strong>NNF</strong></a>(<a
+                    href="bsat.norm._norm.html#_NF">_NF</a>)</font></td>
+    </tr>
+
+    <tr bgcolor="#ffc8d8">
+        <td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+        <td colspan=2><tt><a href="#NNF">NNF</a>(formula:&nbsp;str)<br>
+            &nbsp;<br>
+            Defines&nbsp;a&nbsp;Boolean&nbsp;formula&nbsp;in&nbsp;the&nbsp;negation&nbsp;normal&nbsp;form.<br>
+            &nbsp;<br>
+            In&nbsp;Boolean&nbsp;logic,&nbsp;a&nbsp;formula&nbsp;is&nbsp;in&nbsp;negation&nbsp;normal&nbsp;form&nbsp;if&nbsp;the&nbsp;negation&nbsp;operator&nbsp;(NOT)&nbsp;is<br>
+            only&nbsp;applied&nbsp;to&nbsp;variables&nbsp;and&nbsp;the&nbsp;only&nbsp;other&nbsp;allowed&nbsp;Boolean&nbsp;operators&nbsp;are&nbsp;conjunction<br>
+            (AND)&nbsp;and&nbsp;disjunction&nbsp;(OR).<br>&nbsp;</tt></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td width="100%">
+            <dl>
+                <dt>Method resolution order:</dt>
+                <dd><a href="bsat.norm._norm.html#NNF">NNF</a></dd>
+                <dd><a href="bsat.norm._norm.html#_NF">_NF</a></dd>
+                <dd><a href="abc.html#ABC">abc.ABC</a></dd>
+                <dd><a href="builtins.html#object">builtins.object</a></dd>
+            </dl>
+            <hr>
+            Methods defined here:<br>
+            <dl>
+                <dt><a name="NNF-__init__"><strong>__init__</strong></a>(self, formula: str)</dt>
+                <dd><tt>Inits&nbsp;the&nbsp;<a href="#NNF">NNF</a>&nbsp;formula.<br>
+                    &nbsp;<br>
+                    Args:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;formula:&nbsp;The&nbsp;Boolean&nbsp;formula&nbsp;to&nbsp;represent&nbsp;in&nbsp;<a
+                            href="#NNF">NNF</a>.</tt></dd>
+            </dl>
+
+            <hr>
+            Data and other attributes defined here:<br>
+            <dl>
+                <dt><strong>__abstractmethods__</strong> = frozenset()
+            </dl>
+
+            <hr>
+            Methods inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><a name="NNF-__str__"><strong>__str__</strong></a>(self)</dt>
+                <dd><tt>Returns&nbsp;a&nbsp;printable&nbsp;representation&nbsp;of&nbsp;the&nbsp;formula&nbsp;in&nbsp;normal&nbsp;form.</tt>
+                </dd>
+            </dl>
+
+            <hr>
+            Readonly properties inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><strong>max_solutions</strong></dt>
+                <dd><tt>Maximum&nbsp;possible&nbsp;solutions&nbsp;for&nbsp;this&nbsp;formula.<br>
+                    &nbsp;<br>
+                    Number&nbsp;of&nbsp;possible&nbsp;solutions&nbsp;depends&nbsp;on&nbsp;the&nbsp;number&nbsp;of&nbsp;literals&nbsp;in&nbsp;the&nbsp;formula,&nbsp;N<br>
+                    and&nbsp;is&nbsp;given&nbsp;by&nbsp;2^N.</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>parse_tree</strong></dt>
+                <dd><tt>Parse&nbsp;tree&nbsp;of&nbsp;the&nbsp;NF&nbsp;formula&nbsp;as&nbsp;a&nbsp;preorder,&nbsp;nested&nbsp;list.</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data descriptors inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><strong>__dict__</strong></dt>
+                <dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+            </dl>
+            <dl>
+                <dt><strong>__weakref__</strong></dt>
+                <dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt>
+                </dd>
+            </dl>
+            <hr>
+            Data and other attributes inherited from <a href="bsat.norm._norm.html#_NF">_NF</a>:<br>
+            <dl>
+                <dt><strong>__annotations__</strong> = {'_expr': &lt;class 'bsat.logic._logic.Expression'&gt;}
+            </dl>
+
+        </td>
+    </tr>
+</table>
+</td></tr></table><p>
+<table border=0 cellpadding=2 cellspacing=0 summary="section" width="100%">
+    <tr bgcolor="#55aa55">
+        <td colspan=3 valign=bottom>&nbsp;<br>
+            <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td>
+    </tr>
+
+    <tr>
+        <td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td>
+        <td>&nbsp;</td>
+        <td width="100%"><strong>List</strong> = typing.List</td>
+    </tr>
+</table>
+</body>
+</html>
