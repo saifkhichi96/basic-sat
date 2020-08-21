@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>#/Users/saifkhichi96/dev/personal/libs/basic-sat/bsat</OriginalElement>
+  <nodes>
+    <node x="208.5" y="468.0">logic._logic.Expression</node>
+    <node x="347.0" y="303.0">norm._norm.NNF</node>
+    <node x="928.0" y="1250.0">logic.grammar._lexer.Lexer</node>
+    <node x="450.5" y="870.0">solvers._solvers.SATSolver</node>
+    <node x="756.0" y="870.0">solvers._solvers.SATSolution</node>
+    <node x="0.0" y="1250.0">logic.grammar.PropositionParser</node>
+    <node x="0.0" y="870.0">logic.grammar._lexer._AutoName</node>
+    <node x="607.0" y="1250.0">logic.ExpressionBuilder</node>
+    <node x="337.0" y="727.0">logic._logic.Literal</node>
+    <node x="546.0" y="727.0">logic._logic.BinaryOperation</node>
+    <node x="194.25" y="0.0">norm._norm._NF</node>
+    <node x="56.5" y="974.0">logic.grammar._lexer.Operators</node>
+    <node x="0.0" y="259.0">norm._norm.CNF</node>
+    <node x="319.0" y="1250.0">solvers._solvers.Assignment</node>
+    <node x="0.0" y="727.0">logic._logic.UnaryOperation</node>
+    <node x="425.0" y="996.0">solvers.dpll.DPLLSolver</node>
+    <node x="1162.0" y="870.0">logic.grammar._parser.Parser</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="logic._logic.UnaryOperation" target="logic._logic.Expression">
+      <point x="0.0" y="-49.0" />
+      <point x="158.5" y="702.0" />
+      <point x="282.83333333333337" y="702.0" />
+      <point x="-148.66666666666663" y="104.5" />
+    </edge>
+    <edge source="solvers.dpll.DPLLSolver" target="solvers._solvers.SATSolver">
+      <point x="0.0" y="-71.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="norm._norm.NNF" target="norm._norm._NF">
+      <point x="0.0" y="-38.0" />
+      <point x="444.0" y="234.0" />
+      <point x="358.5" y="234.0" />
+      <point x="54.75" y="104.5" />
+    </edge>
+    <edge source="logic._logic.BinaryOperation" target="logic._logic.Expression">
+      <point x="0.0" y="-49.0" />
+      <point x="795.5" y="702.0" />
+      <point x="580.1666666666666" y="702.0" />
+      <point x="148.66666666666663" y="104.5" />
+    </edge>
+    <edge source="logic._logic.Literal" target="logic._logic.Expression">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="104.5" />
+    </edge>
+    <edge source="logic.grammar._lexer.Operators" target="logic.grammar._lexer._AutoName">
+      <point x="0.0" y="-115.5" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="norm._norm.CNF" target="norm._norm._NF">
+      <point x="0.0" y="-82.0" />
+      <point x="163.5" y="234.0" />
+      <point x="249.0" y="234.0" />
+      <point x="-54.75" y="104.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5491861288039632" x="706.5" y="696.5" />
+  <SelectedNodes>
+    <node>logic._logic.Expression</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Fields</Category>
+  </Categories>
+</Diagram>
+
