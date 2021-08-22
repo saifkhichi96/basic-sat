@@ -1,14 +1,20 @@
-# BasicSAT: A _very_ basic SAT Solver in Python
+---
+layout: project
+title: BasicSAT&#58; A DPLL-based SAT solver
+code: saifkhichi96/basic-sat/
+drawer: true
+---
 
 BasicSAT is a simple SAT solver written in Python. It uses a very naive implementation of [DPLL algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) to find satisfiability of a given [propositional formula](https://en.wikipedia.org/wiki/Propositional_formula).
 
 BasicSAT has two independent modules: a CNF maker and a SAT solver. All input PL statements are first converted to conjunctive normal form (CNF) before being given to the SAT solver to determine its satisfiability. See complete [documentation here](docs/).
 
 ## Releases
-| Version | Description |
-| :-----: | :---------- |
-| [v1.0.0](https://github.com/saifkhichi96/basic-sat/releases/tag/v1.0.0) | Initial version of the project, written in Python2.7. |
-| [v2.0.0](https://github.com/saifkhichi96/basic-sat/releases/tag/v2.0.0) | Project upgraded to Python3. |
+
+| Version  | Description                                           |
+| :------: | :---------------------------------------------------- |
+| [v1.0.0](https://github.com/saifkhichi96/basic-sat/releases/tag/v1.0.0)   | Initial version of the project, written in Python2.7. |
+| [v2.0.0](https://github.com/saifkhichi96/basic-sat/releases/tag/v2.0.0)   | Project upgraded to Python3.                          |
 
 ## Prerequisites
 This project requires Python3 and uses the [ply.yacc](http://www.dabeaz.com/ply/) package for parsing input formulas and generating their parse trees. Before you proceed, make sure that you have the required package installed on your machine.
