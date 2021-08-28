@@ -6,7 +6,7 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-  <title>BasicSAT API documentation | Saif Khan</title>
+  <title>bsat.solvers API Documentation | Saif Khan</title>
 
   <!-- Website icon -->
   <link rel="shortcut icon" href="/assets/images/icons/16.png">
@@ -668,14 +668,14 @@
           <!-- Breadcrumbs -->
           <section>
             <nav class="breadcrumbs" aria-label="breadcrumb">
-              <li class='breadcrumb-item active'>API Documentation</li>
+              <li class='breadcrumb-item active'>solvers</li>
             </nav>
           </section>
           <!-- Summary -->
           <section>
             <div class="project-summary">
               <div>
-                <h1 class="project-title">BasicSAT API Documentation</h1>
+                <h1 class="project-title">bsat.solvers</h1>
                 <div class="project-tags">
                   <a href="#"><span class="project-tag"><i class="material-icons">sell</i>API</span></a>
                   <a href="#"><span class="project-tag"><i class="material-icons">sell</i>Documentation</span></a>
@@ -687,15 +687,24 @@
         <!-- Page Content -->
         <div class="col-md-8 pdoc">
           <div class="docstring">
-            <p>BasicSAT is a DPLL-based SAT solver.</p>
+            <p>Provides a collection of SAT solvers.</p>
+            <p>This package implements different SAT solving algorithms and exposes a common API for using these solvers to find satisfiability of CNF-SAT problems. Available solvers include DPLLSolver.</p>
+            <pre><code>Typical usage example:
+
+solver = DPLLSolver()
+solution = solver.solve('some propositional logic formula')
+solution.formula     # returns the CNF representation of the input formula
+solution.assignments # returns assignments satisfying the formula (if any)
+</code></pre>
           </div>
         </div>
         <aside class="col-md-4">
           <!-- Table of Contents -->
           <section>
-            <h2>Contents</h2>
+            <h2>Submodules</h2>
             <ul>
-              <li><a href="bsat/">bsat</a></li>
+              <li><a href="_solvers/">bsat.solvers._solvers</a></li>
+              <li><a href="dpll/">bsat.solvers.dpll</a></li>
             </ul>
           </section>
           <!-- Feedback -->

@@ -1,1 +1,58 @@
-theme: jekyll-theme-minimal
+remote_theme: saifkhichi96/simple-material
+baseurl: ''
+
+favicon:                   /favicon.ico
+logo:                      /assets/images/logo.png
+
+google_site_verification:  a756de613e3e91e14743d6a24b29a35c
+google_adsense:            ca-pub-4333877529904422
+
+
+# -----------------------------------------------------------------------------
+# Site Navigation
+# -----------------------------------------------------------------------------
+menu_main:
+  - title:                   Home
+    icon:                    roofing
+    url:                     /
+  - title:                   About Me
+    icon:                    contact_page
+    url:                     /resume/
+  - title:                   My Services
+    icon:                    design_services
+    url:                     /services/
+  - title:                   Coding Projects
+    icon:                    cases
+    url:                     /projects/
+  - title:                   Research Work
+    icon:                    science
+    url:                     /research/
+  - title:
+  - title:                   Contact
+    url:                     /contact/
+
+menu_social:
+  email:                   saifkhichi96@gmail.com
+  github:                  saifkhichi96
+  instagram:               saifkhichi96
+  linkedin:                saifkhichi96
+  rss:                     rss
+  twitter:                 saifkhichi96
+  stackoverflow:           4690466
+  youtube:                 /channel/UCj4yPuKHi9pZ9WbKbfh5MEQ
+  playconsole:             7722501168179136426
+
+navigation_footer:         true
+breadcrubms:               true
+
+defaults:
+  - scope:
+      path: ''
+    values:
+      license:
+        content:
+          name: Creative Commons Attribution 4.0 International License
+          url: https://creativecommons.org/licenses/by/4.0/
+        code:
+          name: GNU General Public License
+          url: https://www.gnu.org/licenses/gpl-3.0.en.html

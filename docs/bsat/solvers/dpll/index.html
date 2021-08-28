@@ -6,7 +6,7 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-  <title>BasicSAT API documentation | Saif Khan</title>
+  <title>bsat.solvers.dpll API Documentation | Saif Khan</title>
 
   <!-- Website icon -->
   <link rel="shortcut icon" href="/assets/images/icons/16.png">
@@ -668,14 +668,14 @@
           <!-- Breadcrumbs -->
           <section>
             <nav class="breadcrumbs" aria-label="breadcrumb">
-              <li class='breadcrumb-item active'>API Documentation</li>
+              <li class='breadcrumb-item active'>dpll</li>
             </nav>
           </section>
           <!-- Summary -->
           <section>
             <div class="project-summary">
               <div>
-                <h1 class="project-title">BasicSAT API Documentation</h1>
+                <h1 class="project-title">bsat.solvers.dpll</h1>
                 <div class="project-tags">
                   <a href="#"><span class="project-tag"><i class="material-icons">sell</i>API</span></a>
                   <a href="#"><span class="project-tag"><i class="material-icons">sell</i>Documentation</span></a>
@@ -687,15 +687,122 @@
         <!-- Page Content -->
         <div class="col-md-8 pdoc">
           <div class="docstring">
-            <p>BasicSAT is a DPLL-based SAT solver.</p>
+            <p>Implements a solver for SAT problems based the DPLL algorithm.</p>
           </div>
+          <section id="DPLLSolver">
+            <div class="attr class">
+              <a class="headerlink" href="#DPLLSolver">#&nbsp;&nbsp</a>
+              <span class="def">class</span>
+              <span class="name">DPLLSolver</span><wbr>(<span class="base"><a href="../_solvers/#SATSolver">bsat.solvers._solvers.SATSolver</a></span>):
+            </div>
+            <details>
+              <summary>View Source</summary>
+              <div class="codehilite">
+                <pre><span></span><span class="k">class</span> <span class="nc">DPLLSolver</span><span class="p">(</span><span class="n">SATSolver</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Implements a CNF-SAT solver using the DPLL algorithm.</span>
+
+<span class="sd">    The Davis–Putnam–Logemann–Loveland (DPLL) algorithm is a complete, backtracking-based search algorithm for deciding</span>
+<span class="sd">    the satisfiability of propositional logic formulae in conjunctive normal form. This algorithm is implemented here</span>
+<span class="sd">    to solve the CNF-SAT problems.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">CNF</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SATSolution</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;See base class.&quot;&quot;&quot;</span>
+        <span class="n">parse_tree</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">parse_tree</span>
+        <span class="n">assignments</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_solutions</span><span class="p">(</span><span class="n">parse_tree</span><span class="p">,</span> <span class="nb">dict</span><span class="p">()))</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="n">SATSolution</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">assignments</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">solution</span>
+
+    <span class="k">def</span> <span class="nf">_find_solutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">bindings</span><span class="p">):</span>
+        <span class="n">F</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__minimize</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">bindings</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">F</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">bindings</span> <span class="ow">or</span> <span class="n">F</span>
+            <span class="k">return</span>
+        <span class="k">elif</span> <span class="n">F</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">L</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__next_unbound</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+
+        <span class="n">bindings1</span> <span class="o">=</span> <span class="n">bindings</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">bindings1</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">sat</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_solutions</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">bindings1</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">sat</span>
+
+        <span class="n">bindings2</span> <span class="o">=</span> <span class="n">bindings</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">bindings2</span><span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">sat</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_solutions</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">bindings2</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">sat</span>
+
+    <span class="k">def</span> <span class="nf">__minimize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">bindings</span><span class="p">,</span> <span class="n">infer</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">fn</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__minimize</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">bindings</span><span class="p">,</span> <span class="n">infer</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">infer</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">r</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">fn</span><span class="p">]</span> <span class="o">+</span> <span class="n">args</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">F</span> <span class="ow">in</span> <span class="n">bindings</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">bindings</span><span class="p">[</span><span class="n">F</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">F</span>
+
+    <span class="k">def</span> <span class="nf">__yield_unbounds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">F</span><span class="p">):</span>
+        <span class="n">all_unbounds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">F</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="k">for</span> <span class="n">unbound</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__yield_unbounds</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">unbound</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">all_unbounds</span><span class="p">:</span>
+                        <span class="n">all_unbounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unbound</span><span class="p">)</span>
+                        <span class="k">yield</span> <span class="n">unbound</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">all_unbounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">F</span>
+
+    <span class="k">def</span> <span class="nf">__next_unbound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">F</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">unbound</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__yield_unbounds</span><span class="p">(</span><span class="n">F</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">unbound</span>
+        <span class="k">raise</span> <span class="ne">StopIteration</span>
+</pre>
+              </div>
+            </details>
+            <div class="docstring">
+              <p>Implements a CNF-SAT solver using the DPLL algorithm.</p>
+              <p>The Davis–Putnam–Logemann–Loveland (DPLL) algorithm is a complete, backtracking-based search algorithm for deciding
+                the satisfiability of propositional logic formulae in conjunctive normal form. This algorithm is implemented here
+                to solve the CNF-SAT problems.
+              </p>
+            </div>
+            <div id="DPLLSolver.__init__" class="classattr">
+              <div class="attr function"><a class="headerlink" href="#DPLLSolver.__init__">#&nbsp;&nbsp</a>
+                <span class="name">DPLLSolver</span><span class="signature">()</span>
+              </div>
+            </div>
+            <div class="inherited">
+              <h5>Inherited Members</h5>
+              <dl>
+                <div>
+                  <dt><a href="../_solvers/#SATSolver">bsat.solvers._solvers.SATSolver</a></dt>
+                  <dd id="DPLLSolver.solve" class="function"><a href="../_solvers/#SATSolver.solve">solve</a></dd>
+                </div>
+              </dl>
+            </div>
+          </section>
         </div>
         <aside class="col-md-4">
           <!-- Table of Contents -->
           <section>
-            <h2>Contents</h2>
-            <ul>
-              <li><a href="bsat/">bsat</a></li>
+            <h2>API Documentation</h2>
+            <ul class="memberlist">
+              <li>
+                <a class="class" href="#DPLLSolver">DPLLSolver</a>
+                <ul class="memberlist">
+                  <li>
+                    <a class="function" href="#DPLLSolver.__init__">DPLLSolver</a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </section>
           <!-- Feedback -->

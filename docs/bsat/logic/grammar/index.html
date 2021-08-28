@@ -6,7 +6,7 @@
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-  <title>BasicSAT API documentation | Saif Khan</title>
+  <title>bsat.logic.grammar API Documentation | Saif Khan</title>
 
   <!-- Website icon -->
   <link rel="shortcut icon" href="/assets/images/icons/16.png">
@@ -18,13 +18,17 @@
   <!-- Material Components for Web -->
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
   <!-- Icon Fonts (FontAwesome, Material Icons, etc.) -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="https://www.saifkhichi.com/assets/styles/app.css" />
   <link rel="stylesheet" type="text/css" href="https://www.saifkhichi.com/assets/styles/style.css" />
+
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
   <style>
     /*! pygments syntax highlighting */
     pre {
@@ -660,6 +664,7 @@
       </section>
     </div>
   </div>
+
   <main class="mdc-top-app-bar--fixed-adjust">
     <div class="main-content">
       <article class="about-section">
@@ -668,14 +673,15 @@
           <!-- Breadcrumbs -->
           <section>
             <nav class="breadcrumbs" aria-label="breadcrumb">
-              <li class='breadcrumb-item active'>API Documentation</li>
+              <li class='breadcrumb-item active'>grammar</li>
             </nav>
           </section>
+
           <!-- Summary -->
           <section>
             <div class="project-summary">
               <div>
-                <h1 class="project-title">BasicSAT API Documentation</h1>
+                <h1 class="project-title">bsat.logic.grammar</h1>
                 <div class="project-tags">
                   <a href="#"><span class="project-tag"><i class="material-icons">sell</i>API</span></a>
                   <a href="#"><span class="project-tag"><i class="material-icons">sell</i>Documentation</span></a>
@@ -684,20 +690,170 @@
             </div>
           </section>
         </header>
+
         <!-- Page Content -->
         <div class="col-md-8 pdoc">
           <div class="docstring">
-            <p>BasicSAT is a DPLL-based SAT solver.</p>
+            <p>Defines the grammar for writing Boolean formulas.</p>
           </div>
+
+
+          <section id="PropositionParser">
+            <div class="attr class">
+              <a class="headerlink" href="#PropositionParser">#&nbsp;&nbsp</a>
+
+
+              <span class="def">class</span>
+              <span class="name">PropositionParser</span>:
+            </div>
+
+            <details>
+              <summary>View Source</summary>
+              <div class="codehilite">
+                <pre><span></span><span class="k">class</span> <span class="nc">PropositionParser</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Parser to create trees from Boolean expressions provided as strings.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lexer</span> <span class="o">=</span> <span class="n">_Lexer</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">_Parser</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parses an expression.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            expression: The expression to parse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">operations</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns list of all operations supported by the parser.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_Parser</span><span class="p">()</span><span class="o">.</span><span class="n">operations</span>
+</pre>
+              </div>
+
+            </details>
+
+            <div class="docstring">
+              <p>Parser to create trees from Boolean expressions provided as strings.</p>
+            </div>
+
+
+            <div id="PropositionParser.__init__" class="classattr">
+              <div class="attr function"><a class="headerlink" href="#PropositionParser.__init__">#&nbsp;&nbsp</a>
+
+
+                <span class="name">PropositionParser</span><span class="signature">()</span>
+              </div>
+
+              <details>
+                <summary>View Source</summary>
+                <div class="codehilite">
+                  <pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lexer</span> <span class="o">=</span> <span class="n">_Lexer</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parser</span> <span class="o">=</span> <span class="n">_Parser</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre>
+                </div>
+
+              </details>
+
+
+
+            </div>
+            <div id="PropositionParser.parse" class="classattr">
+              <div class="attr function"><a class="headerlink" href="#PropositionParser.parse">#&nbsp;&nbsp</a>
+
+
+                <span class="def">def</span>
+                <span class="name">parse</span><span class="signature">(self, expression: str)</span>:
+              </div>
+
+              <details>
+                <summary>View Source</summary>
+                <div class="codehilite">
+                  <pre><span></span>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expression</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Parses an expression.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            expression: The expression to parse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</pre>
+                </div>
+
+              </details>
+
+              <div class="docstring">
+                <p>Parses an expression.</p>
+
+                <p>Args:
+                  expression: The expression to parse.</p>
+              </div>
+
+
+            </div>
+            <div id="PropositionParser.operations" class="classattr">
+              <div class="attr function"><a class="headerlink" href="#PropositionParser.operations">#&nbsp;&nbsp</a>
+
+                <div class="decorator">@classmethod</div>
+
+                <span class="def">def</span>
+                <span class="name">operations</span><span class="signature">(cls) -&gt; list</span>:
+              </div>
+
+              <details>
+                <summary>View Source</summary>
+                <div class="codehilite">
+                  <pre><span></span>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">operations</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Returns list of all operations supported by the parser.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_Parser</span><span class="p">()</span><span class="o">.</span><span class="n">operations</span>
+</pre>
+                </div>
+
+              </details>
+
+              <div class="docstring">
+                <p>Returns list of all operations supported by the parser.</p>
+              </div>
+
+
+            </div>
+          </section>
         </div>
+
         <aside class="col-md-4">
           <!-- Table of Contents -->
           <section>
-            <h2>Contents</h2>
+
+            <h2>Submodules</h2>
             <ul>
-              <li><a href="bsat/">bsat</a></li>
+              <li><a href="_lexer/">bsat.logic.grammar._lexer</a></li>
+              <li><a href="_parser/">bsat.logic.grammar._parser</a></li>
+              <li><a href="parsetab/">bsat.logic.grammar.parsetab</a></li>
             </ul>
+
+            <h2>API Documentation</h2>
+            <ul class="memberlist">
+              <li>
+                <a class="class" href="#PropositionParser">PropositionParser</a>
+                <ul class="memberlist">
+                  <li>
+                    <a class="function" href="#PropositionParser.__init__">PropositionParser</a>
+                  </li>
+                  <li>
+                    <a class="function" href="#PropositionParser.parse">parse</a>
+                  </li>
+                  <li>
+                    <a class="function" href="#PropositionParser.operations">operations</a>
+                  </li>
+                </ul>
+
+              </li>
+            </ul>
+
           </section>
+
           <!-- Feedback -->
           <section class="mdc-card mdc-card--outlined">
             <div class="mdc-card__content">
@@ -711,6 +867,7 @@
             </div>
           </section>
         </aside>
+
         <div id="status-bar" class="mdc-snackbar">
           <div class="mdc-snackbar__surface" role="status" aria-relevant="additions">
             <div class="mdc-snackbar__label" aria-atomic="false">
@@ -723,6 +880,7 @@
             </div>
           </div>
         </div>
+
         <script>
           function showSnackbar(text, action = null, callback = null, timeout = 5000) {
             const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
@@ -740,6 +898,7 @@
 
         </script>
       </article>
+
       <footer>
         <div class="footnote">
           <p>
@@ -750,11 +909,13 @@
             Last updated <span id="last-modified"></span>
           </p>
         </div>
+
         <div class="footer">
           <p>
             <a href="https:///www.saifkhichi.com/"><img loading="lazy" src="https://www.saifkhichi.com/assets/images/logo.png" alt="Saif Khan" height="32" /></a>
           </p>
           <div class="text-left">
+
           </div>
           <nav>
             <ul class="sitemap">
@@ -777,12 +938,15 @@
       </footer>
     </div>
   </main>
+
   <script>
     $('#toc .mdc-list-item a').addClass('mdc-list-item__text');
 
   </script>
+
   <!-- user-defined JavaScript -->
   <script async src="https://www.saifkhichi.com/assets/scripts/script.js"></script>
+
   <!-- Other global scripts -->
   <script async src="https://www.saifkhichi.com/assets/scripts/navigation.js"></script>
 </body>

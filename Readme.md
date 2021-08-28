@@ -1,8 +1,10 @@
 ---
 layout: project
 title: BasicSAT&#58; A DPLL-based SAT solver
+description: A simple SAT solver using the DPLL algorithm written in Python. Converts proposition logic statements to CNF and finds satisfying solutions.
 code: saifkhichi96/basic-sat/
-drawer: true
+drawer: false
+permalink: /projects/basic-sat/
 ---
 
 BasicSAT is a simple SAT solver written in Python. It uses a very naive implementation of [DPLL algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) to find satisfiability of a given [propositional formula](https://en.wikipedia.org/wiki/Propositional_formula).
